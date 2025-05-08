@@ -241,6 +241,85 @@ Aparece novo Relacionamente que deve ser adicionado ao Dicionário de Dados: Alu
 
 ## **Utilizar o brModelo**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico.jpg)
+![alt text](Assets_projeto_modelagem01/img_projeto_relac_logico.jpg)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico.jpg)
+
+# **Primeira Forma NormaL**
+
+Uma tabela está na 1ª forma normal quando:
+
+ - Existe uma chave primária;
+ - Somente possui valores atômicos;
+ - Relação não possuis atributos multivalorados ou relaçoões aninhadas;
+ - Relação não possui atributos compostos.
+
+              Departamento
+
+ - PK     Cod_Departamento     Número
+ -        Nome_Departamento    Caractere
+  
+          Tabela Departamento
+
+|            Departamento            |
+|------------------------------------|
+| PK | Cod_Departamento  | Número    |
+|    | Nome_Departamento | Caractere |
+
+           Tabela Professor
+
+|              Professor               |
+|--------------------------------------|
+| PK | Cod_Professor       | Número    |
+|    | Nome_Professor      | Caractere |
+|    | Sobrenome_Professor | Caractere |
+|    | Status              | Booleano  |
+| FK | Cod_Departamento    | Número    |
+
+
+            Tabela Turma
+
+|              Turma                   |
+|--------------------------------------|
+| PK | Cod_Turma           | Número    |
+| FK | Cod_Curso           | Número    |
+|    | Período             | Caractere |
+|    | Num_Alunos          | Número    |
+|    | Data_Inicio         | Data      |
+|    | Data_Fim            | Data      |
+
+           Tabela Curso
+
+|             Curso                    |
+|--------------------------------------|
+| PK | Cod_Curso           | Número    |
+|    | Cod_Departamento    | Número    |
+|    | Nome_Curso          | Caractere |
+
+            Tabela Aluno
+ 
+|              Aluno                   |
+|--------------------------------------|
+| PK | RA                  | Número    |
+|    | Nome_Aluno          | Caractere |
+|    | Sobrenome_Aluno     | Caractere |
+|    | Nome_Rua            | Caractere |
+|    | Num_Rua             | Número    |
+|    | CEP                 | Caractere |
+|    | Status              | Booleano  |
+|    | Filiação            | Caractere |
+|    | Sexo                | Caractere |
+|    | Contato             | Caractere |
+|    | CPF                 | Caractere |
+| FK | Cod_Curso           | Número    |
+| FK | Cod-Turma           | Número    |
+|    | Telefone            | Caractere |
+
+       Tabela Curso_Disciplina
+
+|            Disciplina                |
+|--------------------------------------|
+| PK | Cod_Turma           | Número    |
+| FK |                     |           |
+| PK | Cod_Curso           | Número    |
+| FK |                     |           |
