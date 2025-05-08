@@ -330,3 +330,21 @@ Uma tabela está na 1ª forma normal quando:
 | FK | Cod_Curso | Número | 
 | PK | Turma_ID  | Número | 
 | FK | Curso_ID  | Número | 
+
+Tabela Aluno
+| Atributo | Tipo de Dado | Chave |
+|--------------|------------------|-----------|
+| RA           | Número           | PK        |
+| Nome_Aluno   | Caractere        |           |
+| Sobrenome_Aluno | Caractere       |           |
+| Nome_Rua     | Caractere        |           |
+| Num_Rua      | Número           |           |
+| CEP          | Caractere        |           |
+| Status       | Booleano         |           |
+| Filiação     | Caractere        |           |
+| Sexo         | Caractere        |           |
+| Contato      | Caractere        |           |
+| CPF          | Caractere        |           |
+| Cod_Curso    | Número           | FK        |
+| Cod_Turma    | Número           | FK        |
+| Telefone     | Caractere        |           |
