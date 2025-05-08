@@ -198,6 +198,11 @@ Fases:
 
 # **Dicionário de Dados: Entidades**
 
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_entidade_professor.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_entidade_.curso.jpg)
+
+![alt text](Assets_projeto_modelagem01/img`projeto_entidade_historico.jpg)
 
 
 # **Dicionário de Dados: Atributos**
@@ -217,3 +222,5 @@ Fases:
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_disciplina.png)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_historico.jpg)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitual_completo.jpg)
