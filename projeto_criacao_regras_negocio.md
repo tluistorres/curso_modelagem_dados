@@ -323,3 +323,10 @@ Uma tabela está na 1ª forma normal quando:
 | FK |                     |           |
 | PK | Cod_Curso           | Número    |
 | FK |                     |           |
+
+| Disciplina |
+|--------------------------------------|
+| PK | Cod_Turma | Número |
+| FK | Cod_Curso | Número | 
+| PK | Turma_ID  | Número | 
+| FK | Curso_ID  | Número | 
