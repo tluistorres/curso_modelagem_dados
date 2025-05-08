@@ -176,11 +176,11 @@ Precisamos gerar Entidades Associativas para os relacionamentos Pertence, Compõ
 
 [alt text](Assets_projeto_modelagem01/img_projeto_relac_associativa_curso_disciplina.png)
 
-# **DER iNTERMEDIÁRIO - Após criar as entidades asociativas**
+# **DER INTERMEDIÁRIO - Após criar as entidades asociativas**
 
 ![alt text](Assets_projeto_modelagem01/img_der_intermediario.jpg)
 
-# **Criar um dicionário de Ddos**
+# **Criar um dicionário de Dados**
 
 # **Fases do Projeto**
 
@@ -213,7 +213,7 @@ Fases:
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_curso.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicioanario_turma.png)
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_turma.png)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_aluno.png)
 
@@ -222,5 +222,7 @@ Fases:
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_disciplina.png)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_historico.jpg)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitual_completo.jpg)
