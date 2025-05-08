@@ -1,6 +1,8 @@
-![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
+![alt text](Assets_projeto_modelagem01/img_projeto_modelagem_dados.png)
 
 ![alt text](Assets_projeto_modelagem01/img__projeto_db.png)
+
+![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
 
 # **Apresentação**
 
@@ -132,10 +134,6 @@ Vantagens
   
 sis4.com/brmodelo/
 
-![alt text](Assets_projeto_modelagem01/img_projeto_modelagem_dados.png)
-
-![alt text](Assets_projeto_modelagem01/img_projeto_entidade_atributos_relac.png)
-
 ![alt text](Assets_projeto_modelagem01/img_projeto_professor.jpg)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_aluno.jpg)
@@ -152,7 +150,70 @@ sis4.com/brmodelo/
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_curso.jpg)
 
+![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
 
 # **DER Cardinalidades**
 
+![alt text](Assets_projeto_modelagem01/img_projeto_cardinalidade01.jpg)
 
+# **Entidade Associativa** 
+
+Uma Entidade Associativa é implementada para resolver um relacionamento muitos-para-muitos (N:M).
+Gera uma tabela associativa, que permite mapear duas ou mais tabelas fazendo referência às chaves primárias de cada tabela.
+Contém chaves estrangeiras, cada uma em um relacionamento um-para-muitos da tabela de junção para as tabelas de dados individuais.
+Sua chave primária, no geral, é composta a partir das colunas de chaves estrangeiras em si.
+Uma tabela associativa também pode ser chamada de: Tabela de Referência Cruzada, Tabela de Intersecção, Tabela de Junção, Tabela de Mapeamento, Tabela de Transição, ou ainda outros nomes.
+
+![alt text](Assets_projeto_modelagem01/img_projeto_rel_muitos_muitos.jpg)
+
+# **Relacionamentos N:M**
+
+ - Curso Pertence Disciplina.
+ - Disciplina Compõe Histórico.
+ - Professor Ministra Disciplina.
+
+Precisamos gerar Entidades Associativas para os relacionamentos Pertence, Compõe e Ministra.
+
+[alt text](Assets_projeto_modelagem01/img_projeto_relac_associativa_curso_disciplina.png)
+
+# **DER iNTERMEDIÁRIO - Após criar as entidades asociativas**
+
+![alt text](Assets_projeto_modelagem01/img_der_intermediario.jpg)
+
+# **Criar um dicionário de Ddos**
+
+# **Fases do Projeto**
+
+Fases:
+
+ - Levantamento dos Requisitos;
+ - Identificação de Entidades e Relacionamentos;
+ - Diagrama E-R: Cardinalidades;
+ - Diagrama E-R: Eliminando N:M;
+ - *Dicionário de Dados*;
+ - Modelo Lógico;
+ - Normalização;
+ - Implementação;
+ - Testes Básicos.
+
+# **Dicionário de Dados: Entidades**
+
+
+
+# **Dicionário de Dados: Atributos**
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_departamento.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_professor.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_curso.jpg)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicioanario_turma.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_aluno.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_aluno01.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_disciplina.png)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_historico.jpg)
