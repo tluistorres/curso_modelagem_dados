@@ -226,3 +226,21 @@ Fases:
 ![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitual_completo.jpg)
+
+# **Projeto Prático : Deriva o Modelo Lógico**
+
+![alt text](img_projeto_modeloconceitualDER_completo.jpg)
+
+Aparece novo Relacionamente que deve ser adicionado ao Dicionário de Dados: Aluno/Disciplina.
+
+# **Modelo Lógico**
+
+![alt text](Assets_projeto_modelagem01/img_projeto-relac_ent_modeloconceitual.jpg)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_represent_modelo_logico.jpg)
+
+## **Utilizar o brModelo**
+
+![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico.jpg)
+
+![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico.jpg)
