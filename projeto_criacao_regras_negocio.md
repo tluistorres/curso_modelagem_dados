@@ -169,6 +169,19 @@ sis4.com/brmodelo/
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
 
+# **Novas Entidades e Atributos**
+
+| Histórico |               | Turma  |
+|-----------|               |----------|
+| Cód_Histórico |           | Cod_Turma |
+| Notas |                   | Período  |
+| Média |                   | Cod_Curso |
+| Frequência |              | Num_Alunos |
+| Período_Realização |      | Data_Início  |
+| RA           |            | Data_Fim   |
+| Cod_Disciplina | 
+
+
 # **Atributos da entidade Curso**
 
 | Curso | 
@@ -251,6 +264,8 @@ Fases:
 ![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_historico.jpg)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
+
+
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitual_completo.jpg)
 
@@ -387,6 +402,7 @@ Uma tabela está na 1ª forma normal quando:
 | FK        | Cod_Disciplina | Número          |
 |           | Nota         | Número           |
 |           | Frequência   | Número           |
+
 
 # **DER - Modelo Lógico Completo ( em 1FN)**
 
