@@ -171,15 +171,25 @@ sis4.com/brmodelo/
 
 # **Novas Entidades e Atributos**
 
-| Histórico |               | Turma  |
-|-----------|               |----------|
-| Cód_Histórico |           | Cod_Turma |
-| Notas |                   | Período  |
-| Média |                   | Cod_Curso |
-| Frequência |              | Num_Alunos |
-| Período_Realização |      | Data_Início  |
-| RA           |            | Data_Fim   |
+| Histórico |               
+|-----------|               
+| Cód_Histórico |           
+| Notas |                   
+| Média |                   
+| Frequência |              
+| Período_Realização |      
+| RA           |            
 | Cod_Disciplina | 
+
+
+| Turma |
+|------------|
+| Cod_Turma |
+| Período  |
+| Cod_Curso |
+| Nom_Alunos |
+| Data_Início |
+| Data_Fim |
 
 
 # **Atributos da entidade Curso**
