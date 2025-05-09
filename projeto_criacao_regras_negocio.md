@@ -594,10 +594,53 @@ Os dois campos não-chave dependem integralmente da chave primária composta.OK,
 |           | Frequência   | Número           |
 |           | Num_Telefone | Caractere        |
 
-                TIpo_Telefonema
+                Tipo_Telefonema
              
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK  | Cod_Histórico| Número           |
 | FK        | Cod_Tipo_Telefone | Número          |
 |           | Tipo_Telefone        | Número           |
+
+![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico2FN.jpg)
+
+# **Normalizando as Tabelas: 3FN**
+
+Uma tabela está na 3FN se:
+
+ - Estiver na 2FN;
+ - Não existirem dependências transitivas;
+ - Uma tabela está na 3ªFN se ela estiver na 2FN e nenhuma coluna não-chave depender de outra coluna não-chave.
+  
+Dependência transitiva é uma dependência funcional entre dois ou mais atributos não-chave.
+Caso contrário, deve-se gerar uma outra nova tabela.
+
+# **Terceira Forma Normal - Como Resolver**
+
+ - Para cada atributo ( ou grupo ) não-chave que for um determinante na relação, cria-se uma nova tabela;
+ - Esse atributo será a PK na nova relação;
+ - Move-se então todos os atributos que são dependentes funcionalmente do atributo chave para a nova tabela;
+ - O atributo (PK na nova relação) fica também na tabela original, e servirá como uma chave estrangeira para associar as duas relações.
+
+Próximo passo a seguir é verificar tabela por tabela se está na 3FN ou não.
+
+Tabrela Departamento, Tabela Professor, Tabela Turma, Tabela Curso, Tabela Aluno, Tabela Curso-Disciplina, Tabela Prof_Disciplina, Tabela Histórico, Tabela Disciplina, Tabela Aluno_Disc, Tabela Disc_Hist, Tabela Telefones_Aluno, Tabela Tipo_Telefone, Tabela Endereco_Aluno ( Para colocarmos Cidade, Bairro e Estado; teríamos que criar novas tabelas ), Tabela Tipo_Logradouro. Estão portanto na 3ªFN.
+
+Estas tabelas estão prontas para implementação no Banco de Dados.
+
+# **Projeto Prático: Dicionário de Dados e Ajustes Finais**
+
+Dicionário de Dados: Entidades 
+
+| Entidade | Relacionamento | Nome do Relacionamento | Descrição |
+|-----------|--------------|------------------|----------------|
+|              | Professor  | pertence  |                           |
+| Departamento | Curso    | Controla   | Tabela para cadastra dos Departamentos da faculdade |
+|              | Disciplina | Gerencia   |                                           |
+| Professor   | Departamento | Pettence  |                                    |
+|            | Prof_Disciplina  | Leciona | Tabela para cadastro dos professores da faculdade |
+| Turma     | Curso  | Gera  | Tabela para registro das turmas em andamento e encerradas |
+|           | Aluno | Pertence |                                  |
+
+
+![alt text](Assets_projeto_modelagem01/img_modelo_logico3FN.jpg)
