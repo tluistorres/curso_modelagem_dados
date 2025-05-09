@@ -260,7 +260,7 @@ Uma tabela está na 1ª forma normal quando:
 |-----------|--------------|------------------|
 | PK        | Cod_Departamento | Número          |
 |           | Nome_Departamento | Caractere       |
-           Tabela Professor
+           
 
 Tabela Professor
 | Chave | Atributo | Tipo de Dado |
@@ -271,6 +271,7 @@ Tabela Professor
 |           | Status       | Booleano         |
 | FK        | Cod_Departamento | Número          
 
+
            Tabela Turma
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
@@ -280,6 +281,7 @@ Tabela Professor
 |           | Num_Alunos   | Número           |
 |           | Data_Inicio  | Data             |
 |           | Data_Fim     | Data             |
+
 
           Tabela Curso
 | Chave | Atributo | Tipo de Dado |
