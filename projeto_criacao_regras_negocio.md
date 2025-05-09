@@ -634,13 +634,13 @@ Dicionário de Dados: Entidades
 
 | Entidade | Relacionamento | Nome do Relacionamento | Descrição |
 |-----------|--------------|------------------|----------------|
-|              | Professor  | pertence  |                           |
-| Departamento | Curso    | Controla   | Tabela para cadastra dos Departamentos da faculdade |
+|              | Professor  | Pertence  |                           |
+| Departamento | Curso    | Controla   | Tabela para cadastro dos Departamentos da faculdade |
 |              | Disciplina | Gerencia   |                                           |
-| Professor   | Departamento | Pettence  |                                    |
-|            | Prof_Disciplina  | Leciona | Tabela para cadastro dos professores da faculdade |
-| Turma     | Curso  | Gera  | Tabela para registro das turmas em andamento e encerradas |
-|           | Aluno | Pertence |                                  |
+|            | Departamento | Pertence  |                                    |
+| Professor   | Prof_Disciplina  | Leciona | Tabela para cadastro dos professores da faculdade |
+|          | Curso  | Gera  |                                                              |
+| Turma    | Aluno | Pertence | Tabela para registro das turmas em andamento e encerradas |
 
 
 ![alt text](Assets_projeto_modelagem01/img_modelo_logico3FN.jpg)
