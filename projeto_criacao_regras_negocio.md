@@ -255,14 +255,16 @@ Uma tabela está na 1ª forma normal quando:
  - Relação não possui atributos compostos.
 
          
-         Tabela Departamento
+             Tabela Departamento
+
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK        | Cod_Departamento | Número          |
 |           | Nome_Departamento | Caractere       |
            
 
-Tabela Professor
+               Tabela Professor
+
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK        | Cod_Professor | Número           |
@@ -272,7 +274,8 @@ Tabela Professor
 | FK        | Cod_Departamento | Número          
 
 
-           Tabela Turma
+                Tabela Turma
+
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK        | Cod_Turma    | Número           |
@@ -283,23 +286,25 @@ Tabela Professor
 |           | Data_Fim     | Data             |
 
 
-          Tabela Curso
+                Tabela Curso
+
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK        | Cod_Curso    | Número           |
 |           | Cod_Departamento | Número          |
 |           | Nome_Curso   | Caractere        |
-            Tabela Aluno
- 
+            
 
-       Tabela Curso_Disciplina
+          Tabela Curso_Disciplina
+
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK, FK    | Cod_Turma    | Número           |
 | PK, FK    | Cod_Curso    | Número           |
 
 
-Tabela Aluno
+              Tabela Aluno
+
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK        | RA           | Número           |
@@ -316,3 +321,43 @@ Tabela Aluno
 |           | Telefone     | Caractere        |
 | FK        | Cod_Curso    | Número           |
 | FK        | Cod_Turma    | Número           |
+
+
+               Tabela Histórico
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cód_Histórico | Número           |
+| FK        | RA           | Número           |
+|           | Período_Realização | Data          |
+
+
+               Tabela Disciplina
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Disciplina | Número          |
+| FK        | Cod_Departamento | Número          |
+|           | Nome_Disciplina | Caractere       |
+|           | Descrição    | Caractere        |
+|           | Num_Alunos   | Número           |
+|           | Carga_Horária | Número          |
+
+
+              Tabela Aluno_Disc
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | RA           | Número           |
+| PK, FK    | Cod_Disciplina | Número          |
+
+
+             Tabela Disc_Hist
+             
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Histórico | Número           |
+| FK        | Cod_Disciplina | Número          |
+|           | Nota         | Número           |
+|           | Frequência   | Número           |
+
