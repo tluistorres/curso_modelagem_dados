@@ -143,11 +143,20 @@ sis4.com/brmodelo/
 | Cod_Departamento   | 
 | Status       | 
        
-![alt text](Assets_projeto_modelagem01/img_projeto_aluno.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_aluno.jpg)
-
-![alt text](Assets_projeto_modelagem01/img_aluno.jpg)
+| Aluno    | 
+|--------------|
+| RA           | 
+| Nome_Aluno   | 
+| Endereço      | 
+| Cod_Curso    | 
+| *Telefone    | 
+| CPF    | 
+| Status          | 
+| Filiação     | 
+| Sexo  | 
+| Contato  |
+| Cod_Turma    | 
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_departamento.jpg)
 
@@ -181,7 +190,7 @@ Uma tabela associativa também pode ser chamada de: Tabela de Referência Cruzad
 
 Precisamos gerar Entidades Associativas para os relacionamentos Pertence, Compõe e Ministra.
 
-[alt text](Assets_projeto_modelagem01/img_projeto_relac_associativa_curso_disciplina.png)
+![alt text](Assets_projeto_modelagem01/img_proj_assoc_curso_disciplina.png)
 
 # **DER INTERMEDIÁRIO - Após criar as entidades asociativas**
 
@@ -236,7 +245,7 @@ Fases:
 
 # **Projeto Prático : Deriva o Modelo Lógico**
 
-![alt text](img_projeto_modeloconceitualDER_completo.jpg)
+![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitualDER_completo.jpg)
 
 Aparece novo Relacionamente que deve ser adicionado ao Dicionário de Dados: Aluno/Disciplina.
 
