@@ -1,7 +1,3 @@
-![alt text](Assets_projeto_modelagem01/img_projeto_modelagem_dados.png)
-
-![alt text](Assets_projeto_modelagem01/img__projeto_db.png)
-
 ![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
 
 # **Apresentação**
@@ -115,7 +111,14 @@ Objetivos do Banco de Dados:
  - Código do Departamento
  - Nome do Departamento
 
-![alt text](Assets_projeto_modelagem01/img_projeto_curso.jpg)
+# **Atributos da Entidade Curso**
+
+| Curso | 
+|-----------|
+| Cod_Curso    | 
+| Nome_Curso   | 
+| Cod_Departamento |           
+
 
 # **Ferramenta brModelo 3.0**
 
@@ -144,6 +147,8 @@ sis4.com/brmodelo/
 | Status       | 
        
 
+# **Atributos da entidade Aluno**
+
 | Aluno    | 
 |--------------|
 | RA           | 
@@ -164,7 +169,13 @@ sis4.com/brmodelo/
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_curso.jpg)
+# **Atributos da entidade Curso**
+
+| Curso | 
+|--------------|
+| Cod_Curso    |  
+| Nome_Curso   | 
+| Cod_Departamento |
 
 ![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
 
