@@ -254,97 +254,63 @@ Uma tabela está na 1ª forma normal quando:
  - Relação não possuis atributos multivalorados ou relaçoões aninhadas;
  - Relação não possui atributos compostos.
 
-              Departamento
-
- - PK     Cod_Departamento     Número
- -        Nome_Departamento    Caractere
-  
-          Tabela Departamento
-
-|            Departamento            |
-|------------------------------------|
-| PK | Cod_Departamento  | Número    |
-|    | Nome_Departamento | Caractere |
-
+         
+         Tabela Departamento
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Departamento | Número          |
+|           | Nome_Departamento | Caractere       |
            Tabela Professor
 
-|              Professor               |
-|--------------------------------------|
-| PK | Cod_Professor       | Número    |
-|    | Nome_Professor      | Caractere |
-|    | Sobrenome_Professor | Caractere |
-|    | Status              | Booleano  |
-| FK | Cod_Departamento    | Número    |
+Tabela Professor
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Professor | Número           |
+|           | Nome_Professor | Caractere       |
+|           | Sobrenome_Professor | Caractere    |
+|           | Status       | Booleano         |
+| FK        | Cod_Departamento | Número          
 
+           Tabela Turma
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Turma    | Número           |
+| FK        | Cod_Curso    | Número           |
+|           | Período      | Caractere        |
+|           | Num_Alunos   | Número           |
+|           | Data_Inicio  | Data             |
+|           | Data_Fim     | Data             |
 
-            Tabela Turma
-
-|              Turma                   |
-|--------------------------------------|
-| PK | Cod_Turma           | Número    |
-| FK | Cod_Curso           | Número    |
-|    | Período             | Caractere |
-|    | Num_Alunos          | Número    |
-|    | Data_Inicio         | Data      |
-|    | Data_Fim            | Data      |
-
-           Tabela Curso
-
-|             Curso                    |
-|--------------------------------------|
-| PK | Cod_Curso           | Número    |
-|    | Cod_Departamento    | Número    |
-|    | Nome_Curso          | Caractere |
-
+          Tabela Curso
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Curso    | Número           |
+|           | Cod_Departamento | Número          |
+|           | Nome_Curso   | Caractere        |
             Tabela Aluno
  
-|              Aluno                   |
-|--------------------------------------|
-| PK | RA                  | Número    |
-|    | Nome_Aluno          | Caractere |
-|    | Sobrenome_Aluno     | Caractere |
-|    | Nome_Rua            | Caractere |
-|    | Num_Rua             | Número    |
-|    | CEP                 | Caractere |
-|    | Status              | Booleano  |
-|    | Filiação            | Caractere |
-|    | Sexo                | Caractere |
-|    | Contato             | Caractere |
-|    | CPF                 | Caractere |
-| FK | Cod_Curso           | Número    |
-| FK | Cod-Turma           | Número    |
-|    | Telefone            | Caractere |
 
        Tabela Curso_Disciplina
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Turma    | Número           |
+| PK, FK    | Cod_Curso    | Número           |
 
-|            Disciplina                |
-|--------------------------------------|
-| PK | Cod_Turma           | Número    |
-| FK |                     |           |
-| PK | Cod_Curso           | Número    |
-| FK |                     |           |
-
-| Disciplina |
-|--------------------------------------|
-| PK | Cod_Turma | Número |
-| FK | Cod_Curso | Número | 
-| PK | Turma_ID  | Número | 
-| FK | Curso_ID  | Número | 
 
 Tabela Aluno
-| Atributo | Tipo de Dado | Chave |
-|--------------|------------------|-----------|
-| RA           | Número           | PK        |
-| Nome_Aluno   | Caractere        |           |
-| Sobrenome_Aluno | Caractere       |           |
-| Nome_Rua     | Caractere        |           |
-| Num_Rua      | Número           |           |
-| CEP          | Caractere        |           |
-| Status       | Booleano         |           |
-| Filiação     | Caractere        |           |
-| Sexo         | Caractere        |           |
-| Contato      | Caractere        |           |
-| CPF          | Caractere        |           |
-| Cod_Curso    | Número           | FK        |
-| Cod_Turma    | Número           | FK        |
-| Telefone     | Caractere        |           |
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | RA           | Número           |
+|           | Nome_Aluno   | Caractere        |
+|           | Sobrenome_Aluno | Caractere       |
+|           | Nome_Rua     | Caractere        |
+|           | Num_Rua      | Número           |
+|           | CEP          | Caractere        |
+|           | Status       | Booleano         |
+|           | Filiação     | Caractere        |
+|           | Sexo         | Caractere        |
+|           | Contato      | Caractere        |
+|           | CPF          | Caractere        |
+|           | Telefone     | Caractere        |
+| FK        | Cod_Curso    | Número           |
+| FK        | Cod_Turma    | Número           |
