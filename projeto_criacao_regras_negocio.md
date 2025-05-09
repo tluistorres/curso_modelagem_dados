@@ -291,17 +291,9 @@ Uma tabela está na 1ª forma normal quando:
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
 | PK        | Cod_Curso    | Número           |
-|           | Cod_Departamento | Número          |
+| FK        | Cod_Departamento | Número          |
 |           | Nome_Curso   | Caractere        |
             
-
-          Tabela Curso_Disciplina
-
-| Chave | Atributo | Tipo de Dado |
-|-----------|--------------|------------------|
-| PK, FK    | Cod_Turma    | Número           |
-| PK, FK    | Cod_Curso    | Número           |
-
 
               Tabela Aluno
 
@@ -321,6 +313,14 @@ Uma tabela está na 1ª forma normal quando:
 |           | Telefone     | Caractere        |
 | FK        | Cod_Curso    | Número           |
 | FK        | Cod_Turma    | Número           |
+
+
+            Tabela Curso_Disciplina
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Turma    | Número           |
+| PK, FK    | Cod_Curso    | Número           |
 
 
                Tabela Histórico
@@ -361,3 +361,190 @@ Uma tabela está na 1ª forma normal quando:
 |           | Nota         | Número           |
 |           | Frequência   | Número           |
 
+# **DER - Modelo Lógico Completo ( em 1FN)**
+
+![alt text](Assets_projeto_modelagem01/img_modelo_logico_atualizado.jpg)
+
+# **Normalizando as Tabelas segundo à 2ªFN**
+
+Uma tabela está na 2ª forma normal quando:
+ - Está na 1FN;
+ - Todos os atributos não-chave são funcionalmente dependentes de todas as partes da chave primárias;
+ - Não existem dependências parciais, e atributos não dependem de chaves candidatas;
+
+Caso contrário, deve-se gerar uma nova tabela com os dados.
+Um atributo-chave é um que é uma PK ou parte de uma PK composta.
+
+Verificar tabela por tabela para saber se elas estão na 2ªFN.
+
+              Tabela Departamento
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Departamento | Número          |
+|           | Nome_Departamento | Caractere       |
+
+*Nome_Departamento depende do Cod_DepartameNto ---> Ok, satisfaz a 2ªFN*.        
+
+
+                 Tabela Professor
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Professor | Número           |
+|           | Nome_Professor | Caractere       |
+|           | Sobrenome_Professor | Caractere    |
+|           | Status       | Booleano         |
+| FK        | Cod_Departamento | Número          
+
+*Nome_Professor, Sobrenome_Professor, Status dependem do Cod_Professor ---> Ok, satisfaz a 2ªFN*. O atributo Cod_Departamento por ser uma chave estrangeira, não se aplica esta análise. Só se aplica aos atributos não-chave.
+
+
+                  Tabela Turma
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Turma    | Número           |
+| FK        | Cod_Curso    | Número           |
+|           | Período      | Caractere        |
+|           | Num_Alunos   | Número           |
+|           | Data_Inicio  | Data             |
+|           | Data_Fim     | Data             |
+
+*Período, Num_Alunos, Data_Inicio, Data_Fim, dependem Cod_Turma ---> Ok, satisfaz a 2ªFN*.
+
+
+                  Tabela Curso
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Curso    | Número           |
+| FK        | Cod_Departamento | Número          |
+|           | Nome_Curso   | Caractere        |
+            
+*Nome_Curso depende do Cod_Curso ---> Ok, satisfaz a 2ªFN*.
+
+
+                 Tabela Aluno
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | RA           | Número           |
+|           | Nome_Aluno   | Caractere        |
+|           | Sobrenome_Aluno | Caractere       |
+|           | Nome_Rua     | Caractere        |
+|           | Num_Rua      | Número           |
+|           | CEP          | Caractere        |
+|           | Status       | Booleano         |
+|           | Nome_Pai     | Caractere        |
+|           | Nome_Mae     | Caractere        |
+|           | Sexo         | Caractere        |
+|           | Email        | Caractere        |
+|           | Whatsap      | Caractere        |
+|           | CPF          | Caractere        |
+| FK        | Cod_Curso    | Número           |
+| FK        | Cod_Turma    | Número           |
+|           | Telefone_Res | Caractere        |
+|           | Telefone_Cel | Caractere        |
+
+
+
+Temos que encontrar campos que não sejam dependentes de RA, e não dependam de outrso campos.
+
+Nome_Aluno, Sobrenome_Aluno, Status, Nome_Pai, Nome_Mae, Sexo, Email, Whatsap, CPF e Telefone_Cel dependem do RA;
+Nome_Rua , Num_Rua, CEP e Telefone_Res não estão na 2ªFN;
+É uma melhor prática tirar esses atributos que não estão em conformidade com a 2ªFN, não obrigatório, mas útil para melhor prática e perfomace do BD.
+
+
+          Tabela Curso_Disciplina
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Turma    | Número           |
+| PK, FK    | Cod_Curso    | Número           |
+
+OK, satisfaz a 2ªFN.
+
+
+            Tabela Curso_Disciplina
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Turma    | Número           |
+| PK, FK    | Cod_Curso    | Número           |
+
+É uma tabela associativa e se quer tem atributos não-chave, OK satisfaz a 2ªFN.
+
+
+            Tabela Prof_Disciplina
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Disciplina    | Número           |
+| PK, FK    | Cod_Professor   | Número           |
+
+É uma tabela associativa e se quer tem atributos não-chave, OK satisfaz a 2ªFN.
+
+               Tabela Histórico
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cód_Histórico | Número           |
+| FK        | RA           | Número           |
+|           | Data_Inicio | Data          |
+|           | Data_Fim    | Data          |
+
+Tanto Data_Inicio quanto Data_Fim são dependentes funcionais do Cod_Histórico. OK, está na 2ºFN.
+
+                Tabela Disciplina
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK,FK        | Cod_Disciplina | Número          |
+| FK        | Cod_Departamento | Número          |
+|           | Nome_Disciplina | Caractere       |
+|           | Descrição    | Caractere        |
+|           | Num_Alunos   | Número           |
+|           | Carga_Horária | Número          |
+
+Todos os atributos dependem do Cod_ Disciplina, OK, satisfaz a 2ªFN.
+
+           Tabela Aluno_Disc
+
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | RA           | Número           |
+| PK, FK    | Cod_Disciplina | Número          |
+
+Tabela associativa, OK satisfaz a 2ª FN.
+
+ Tabela Disc_Hist
+             
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK, FK    | Cod_Histórico | Número           |
+| FK        | Cod_Disciplina | Número          |
+|           | Nota         | Número           |
+|           | Frequência   | Número           |
+
+Os dois campos não-chave dependem integralmente da chave primária composta.OK, satisfaz a 2ªFN.
+
+# **Tabela para armazenar Telefones:**
+
+             Telefones_Aluno
+             
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK        | Cod_Telefones_Alunos | Número           |
+| FK        | RA           | Número          |
+| FK       | Cod_Tipo_Telefone        | Número           |
+|           | Frequência   | Número           |
+|           | Num_Telefone | Caractere        |
+
+                TIpo_Telefone
+             
+| Chave | Atributo | Tipo de Dado |
+|-----------|--------------|------------------|
+| PK  | Cod_Histórico| Número           |
+| FK        | Cod_Tipo_Telefone | Número          |
+|           | Tipo_Telefone        | Número           |
