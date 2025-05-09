@@ -134,8 +134,15 @@ Vantagens
   
 sis4.com/brmodelo/
 
-![alt text](Assets_projeto_modelagem01/img_projeto_professor.jpg)
+# **Atributos da entidade Professor**
 
+| Professor |
+|-----------|
+| Cod_Professor | 
+| Nome_Professor | 
+| Cod_Departamento   | 
+| Status       | 
+       
 ![alt text](Assets_projeto_modelagem01/img_projeto_aluno.jpg)
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_aluno.jpg)
@@ -541,7 +548,7 @@ Os dois campos não-chave dependem integralmente da chave primária composta.OK,
 |           | Frequência   | Número           |
 |           | Num_Telefone | Caractere        |
 
-                TIpo_Telefone
+                TIpo_Telefonema
              
 | Chave | Atributo | Tipo de Dado |
 |-----------|--------------|------------------|
