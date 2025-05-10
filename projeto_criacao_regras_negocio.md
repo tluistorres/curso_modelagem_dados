@@ -631,19 +631,20 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 # **Projeto Prático: Dicionário de Dados e Ajustes Finais**
 
                  Dicionário de Dados
-
 | Entidade | Relacionamento | Nome do Relacionamento | Descrição |
 | --- | --- | --- | --- |
 | Professor | Pertence | Departamento | Tabela para cadastro dos professores da faculdade |
 | Departamento | Controla | Curso | Tabela para cadastro dos Departamentos da faculdade |
+| Disciplina | Gerencia | Departamento | Tabela para cadastro das disciplinas que compõem os cursos oferecidos |
 | Curso | Gera | Turma | Tabela para cadastro dos cursos oferecidos |
 | Turma | Pertence | Departamento | Tabela para registro das turmas em andamento e encerradas |
 | Aluno | Pertence | Turma | Tabela para cadastro de informações sobre os alunos da faculdade |
+| Aluno | Cursa | Disciplina | Tabela associativa entre aluno e Disciplina |
 | Professor | Leciona | Disciplina | Tabela associativa entre Professor e Disciplina |
-| Disciplina | Pertence | Departamento | Tabela para cadastro das disciplinas que compõem os cursos oferecidos |
 | Curso | Possui | Disciplina | Tabela associativa entre Curso e Disciplina |
-| Aluno | Cursa | Disciplina | Tabela associativa entre Aluno e Disciplina |
-| Histórico | Pertence | Aluno | Tabela para geração do histórico de notas e faltas dos alunos |
+| Disciplina | Compõe | Histórico | Tabela associativa entre Disciplina e Histórico |
+| Aluno | Possui | Endereco_Aluno | Tabela para registros dos alunos |
+| Aluno | Possui | Telefone_Aluno | Tabela para registro dos telefones dos alunos |
 
 # **Atributos**
 
