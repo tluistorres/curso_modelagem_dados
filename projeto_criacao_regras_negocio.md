@@ -709,6 +709,62 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 | Nome_Departamento | Caractere     | 20 bytes | NOT NULL     | Nome do Departaemnto                    |
 
 
+                               Entidade Professor                                          
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Professor     | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação do professor     |
+| Nome_Professor    | Caractere     | 20 bytes | NOT NULL     | Nome do Professor                        |
+| Sobrenome_Professor | Caractere   | 50 bytes | NOT NULL     | Sobrenome do Professor                   |
+| Cod_Departamento  | Inteiro       | 2 bytes  | FK, NOT NULL | Código de identificação do departamento  |
+| Status            | Booleano      | 1bit     | NOT NULL     | Status do professsor não lecionando      |
+
+
+                               Entidade Curso
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Curso         | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação do curso         |
+| Nome_Curso        | Caractere     | 40 bytes | NOT NULL     | Nome do curso                            |
+| Cod_Departamento  | Inteiro       | 2 bytes  | FK, NOT NULL | Código do departamento                   |
+
+
+                               Entidade Turma                                       
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Turma         | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação da turma         |
+| Cod_Curso         | Inteiro       | 2 bytes  | FK, NOT NULL | Código do curso                          |
+| Período           | Caractere     | 5 bytes  | NOT NULL     | Período da turma manhã, tarde ou noite   |
+| Num_Alunos        | Inteiro       | 2 bytes  | NOT NULL     | Números de alunos matriculados na turma  |
+| Data_Inicio       | Data          | 4 bytes  | NOT NULL     | Data início da turma                     |
+| Data_Fim          | Data          | 4 bytes  | NOT NULL     | Data de fim da turma                     |
+
+
+                               Entidade Aluno                                      
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| RA                | Caractere     | 8 bytes  | PK, NOT NULL | Código de identificação do aluno         |
+| Nome_Aluno        | Caractere     | 20 bytes | NOT NULL     | Nome do aluno                            |
+| Sobrenome_Aluno   | Caractere     | 50 bytes | NOT NULL     | Sobrenome do aluno
+| CPF               | Caractere     | 11 bytes | NOT NULL, UNIQUE | CPF do aluno                         |
+| Status            | Caractere     | 1 bit    | NOT NULL     | Status da matrícula do aluno             |
+| Email             | Caractere     | 60 bytes | NOT NULL     | E-mail do aluno                         |
+| Whatsapp          | Caractere     | 11 bytes | NULL         | Whatsapp do aluno                       |
+| Cod_Turma         | Inteiro       | 2 bytes  | FK, NOT NULL | Código de identificação da turma        |
+| Cod_Curso         | Inteiro       | 2 bytes  | FK, NOT NULL | Código de identificação do curso        |
+| Sexo              | Caractere     | 1 byte   | NOT NULL     | Sexo do aluno                           |
+| Nome_Mãe          | Caractere     | 80 bytes | NOT NULL     | Nome da mãe do aluno                  |
+| Nome_Pai          | Caractere     | 80 bytes | NOT NULL     | Nome do pai do aluno                    |
+
+
+
+                               Entidade Disciplia                            
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Turma         | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação da turma         |
+| Cod_Curso         | Inteiro       | 2 bytes  | FK, NOT NULL | Código do curso                          |
+| Período           | Caractere     | 5 bytes  | NOT NULL     | Período da turma manhã, tarde ou noite   |
+| Num_Alunos        | Inteiro       | 2 bytes  | NOT NULL     | Números de alunos matriculados na turma  |
+| Data_Inicio       | Data          | 4 bytes  | NOT NULL     | Data início da turma                     |
+| Data_Fim          | Data          | 4 bytes  | NOT NULL     | Data de fim da turma                     |
 
 
 
@@ -717,4 +773,3 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 
 
 ![alt text](Assets_projeto_modelagem01/img_modelo_logico3FN.jpg)
-
