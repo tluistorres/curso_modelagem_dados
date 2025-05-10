@@ -844,6 +844,11 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 
 
 
+                              Entidade Tipo_Telefone                                      
+| Atributo            | Tipo de Dados    | Cumprim. | Restrições        | Descrição                         |  
+|---------------------|------------------|----------|-------------------|------------------------------------|
+| Cod_Tipo_Telefone   | Inteiro          | 1 byte   | PK, NOT NULL   | Código de identificação do tipo de telefone |
+| Tipo_Telefone       | Caractere        | 12 bytes | NOT NULL       | Nome do tipo de telefone              |
 
 
 
