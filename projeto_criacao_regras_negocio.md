@@ -702,13 +702,12 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 # **Dicionário de Dados Atributos**
 
 
-|                                Entidade Departamento                                           |
+                               Entidade Departamento                                           
 | Atributo          | Tipo de Dados | Cumprim. | Restrições   | Descrição                        |  
-|-------------------|---------------|----------|--------------|----------------------------------|
+|-------------------|------------------|----------|-------------------|----------------------------------|
 | Cod_Departamento  | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação do departamento |
 | Nome_Departamento | Caractere     | 20 bytes | NOT NULL     | Nome do Departaemnto                    |
 
-|-------------------------------------------------------------|
 
 
 
