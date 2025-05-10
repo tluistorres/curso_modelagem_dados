@@ -757,14 +757,90 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 
 
                                Entidade Disciplia                            
+| Atributo          | Tipo de Dados    | Cumprim.  | Restrições        | Descrição                       |  
+|-------------------|------------------|-----------|-------------------|----------------------------------|
+| Cod_Disciplina    | Inteiro       | 2 bytes   | PK, NOT NULL | Código de identificação da disciplina    |
+| Nome_Disciplina   | Caractere     | 30 bytes  | NOT NULL     | Nome da disciplina                       |
+| Descrição         | Caractere     | 200 bytes | NULL         | Descrição da disciplina                  |
+| Cod_Departamento  | Inteiro       | 2 bytes   | FK, NOT NULL | Código do dpartamento sada disciplina    |
+| Carga_Horaria     | Inteiro       | 2 bytes   | NOT NULL     | Carga horária da disciplina              |
+| Num_Alunos        | Inteiro       | 2 bytes   | NOT NULL     | Quantidade de alunos                     |
+
+
+
+                                Entidade Histórico                                     
 | Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
 |-------------------|------------------|----------|-------------------|----------------------------------|
-| Cod_Turma         | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação da turma         |
-| Cod_Curso         | Inteiro       | 2 bytes  | FK, NOT NULL | Código do curso                          |
-| Período           | Caractere     | 5 bytes  | NOT NULL     | Período da turma manhã, tarde ou noite   |
-| Num_Alunos        | Inteiro       | 2 bytes  | NOT NULL     | Números de alunos matriculados na turma  |
-| Data_Inicio       | Data          | 4 bytes  | NOT NULL     | Data início da turma                     |
-| Data_Fim          | Data          | 4 bytes  | NOT NULL     | Data de fim da turma                     |
+| Cod_Histórico     | Inteiro       | 2 bytes  | PK, NOT NULL | Código de identificação do histórico     |
+| RA                | Caractere     | 6 bytes  | FK, NOT NULL | Código de identificação do aluno         |
+| Data_Inicio       | Data          | 4 bytes  | NOT NULL     | Data início do curso                     |
+| Data_Final        | Data          | 4 bytes  | NULL         | Data em que o alun o finalizou o curso   |
+
+
+
+                                Entidade Disc_Hist                                    
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Histórico     | Inteiro       | 2 bytes  | PK,FK,NOT NULL | Código de identificação do histórico     |
+| Cod_Disciplina    | Inteiro       | 2 bytes  | PK,FK,NOT NULL | Código de identificação da disciplina    |
+| Nota              | Decimal       | 8 bytes  | NOT NULL       | Nota da disciplina                       |
+| Frequência        | Inteiro       | 2 bytes  | NOT NULL       | Número de faltas na disciplina           |
+
+
+
+                                Entidade Curso_Disciplina                                         
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Curso         | Inteiro       | 2 bytes  | PK,FK, NOT NULL | Código de identificação do curso      |
+| Cod_Disciplina    | Inteiro       | 2 bytes  | PK,FK, NOT NULL | Código de identificação da disciplina |
+
+
+
+                          Entidade Prof_Disciplina                                         
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Professor     | Inteiro       | 2 bytes  | PK,FK, NOT NULL | Código de identificação do professor  |
+| Cod_Disciplina    | Inteiro       | 2 bytes  | PK,FK, NOT NULL | Código de identificação da disciplina |
+
+
+
+                          Entidade Aluno_Disc                                        
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| RA                | Caractere     | 6 bytes  | PK,FK, NOT NULL | Código de identificação do aluno      |
+| Cod_Disciplina    | Inteiro       | 2 bytes  | PK,FK, NOT NULL | Código de identificação da disciplina |
+
+
+
+                               Entidade Endereco_Aluno                                      
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Endereco      | Inteiro       | 1 byte   | PK, NOT NULL   | Código de identificação do aluno         |
+| RA                | Caractere     | 6 bytes  | PK,FK, NOT NULL| Código de identificação da disciplina    |
+| Cod_Tipo_Logradouro  | Inteiro    | 1 byte   | FK, NOT NULL   | Código do tipo de logradouro           |
+| Nome_Rua          | Caractere     | 50 bytes | NOT NULL       | Nome da rua                            |
+| Num_Rua           | Inteiro       | 2 bytes  | NOT NULL       | Número do imóvel                       |
+| Complemento       | Caractere     | 20 bytes | NULL           | Complemento                            |
+| CEP               | Caractere     | 8 bytes  | NOT ULL        | CEP da rua                             |
+
+
+
+                              Entidade Tipo_Logradouro                                      
+| Atributo            | Tipo de Dados    | Cumprim. | Restrições        | Descrição                         |  
+|---------------------|------------------|----------|-------------------|------------------------------------|
+| Cod_Tipo_Logradouro | Inteiro          | 1 byte   | PK, NOT NULL   | Código de identificação do tipo de logradouro |
+| Tipo_Logradouro     | Caractere        | 10 bytes | NOT NULL       | Nome do tipo de logradouro            |
+
+
+
+                               Entidade Telefones_Aluno                                      
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|--------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Telefone_Aluno | Inteiro       | 1 byte   | PK, NOT NULL  | Código de identificação do telefone       |
+| RA                | Caractere     | 6 bytes  | FK, NOT NULL | RA do aluno                               |
+| Cod_Tipo_Logradouro  | Inteiro    | 1 byte   | FK, NOT NULL   | Código do tipo de telefone              |
+| Telefone          | Caractere     | 11 bytes | NOT NULL       | Número do telefone                      |
+
 
 
 
