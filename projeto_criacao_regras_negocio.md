@@ -648,6 +648,7 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |             | Curso           | Gera     |                                                  |
 | Turma       |                 |          | Tabela para registro das turmas em andamento e encerradas |
 |             | Aluno           | Pertence |                                                 |
+|            |                  |          |                                                |
 |                                                                                         |
 |          | Departamento     | Controla         |                                        |
 |          | Turma            | Gera             |                                            |
