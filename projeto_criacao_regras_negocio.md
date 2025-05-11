@@ -635,7 +635,7 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 | Entidade | Relacionamento | Nome do Relacionamento | Descrição |
 |---------|-----------|----------|---------------|
 |                                                                                            |
-|              | Professor  | Pertence  |                           |
+|              | Professor  | Pertence  |                                                    |
 | Departamento | Curso    | Controla   | Tabela para cadastro dos Departamentos da faculdade |
 |              | Disciplina | Gerencia   |                                           |
 |              |            |             |                                            |
@@ -655,12 +655,14 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |          | Aluno            | Está matriculado |pela faculdade                           |                             
 |          | Curso_Disciplina | Possui           |                                           |
 |                                                                                                   |
+|          |                  |                  |                                                  |
 |          | Curso            | Está matriculado |                                                  |
 |          | Turma            | Pertence         |                                                          |
-| Aluno    | Aluno_disc       | Cursa            |Tabela para cadastro de informações sobre os alunos da |            
+| Aluno    | Aluno_disc       | Cursa            |Tabela para cadastro de informações sobre os alunos da    |            
 |          | Histórico        | Pertence         |faculdade                                                  |
 |          | Telenones_Alunos | Possui           |                                                           |
-|                                                                                                            |        
+|                                                                                                            | 
+|          |                  |                  |                                                           |       
 |          | Aluno_Disc       | Cursa            |                                                           |
 |          | Departamento     | Gerencia         |                                                           |
 |          | Prof_Disciplina  | É lecionada      |                                                           |
@@ -668,38 +670,46 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |          | Curso_Disciplina | Perrtence        |oferecidos pela faculdade                                 |
 |          | Disciplina       | Depende          |                                                           |
 |          | Disc_Hist        | Compõe           |                                                           |
-|                                                                                                            |          
+|                                                                                                            |   
+|          |                  |                  |                                                           |       
 |          | Aluno            | Pertence a       |                                                           |
 | Histórico |                 |                  | Tabela para geração do histórico de notas e faltas dos    |
 |            | Disc_Hist       | É composto       | alunos                                                   |
-|           |                 |                  |                                                     |
+|           |                 |                  |                                                           |
 |                                                                                                            |
+|           |                 |                  |                                                           |
 |           | Disciplina      | Compõe           |                                                           |
 | Disc_Hist |                 |                  | Tabela associativa entre Disciplina e Histórico           |
-|           | Histórico       | É composto       |  
-|                                                                                                            |           
+|           | Histórico       | É composto       |                                                           |
+|                                                                                                            |  
+|           |                 |                  |                                                           |         
 |           | Curso           | Possui           |                                                           |
 | Curso_Disciolina |          |                  | Tabela associativa entre Curso e Disciplina               |
 |           | Disciplina      | Pertence         |                                                           |
-|                                                                                                            |          
+|                                                                                                            | 
+|           |                 |                  |                                                           |         
 |           | Professor       | Leciona          |                                                           |
 | Prof_Disciplina |           |                  | Tabela associativa entre Professor e Disciplina           |
 |           | Disciplina      | É lecionada      |                                                           |
 |                                                                                                            |
+|           |                 |                  |                                                           |
 |           | Aluno           | Possui           |                                                           |
 | Endereco_Aluno |            |                  | Tabela para registros dos alunos                          |
 |           | Tipo_Logradouro | É do tipo        |                                                           |
+|           |                 |                  |                                                           |
 |                                                                                                            |          
 | Tipo_Logradouro | Endereco_Aluno | Compçõe     | Tabela de registros dos tipos de logradouros              |
 |                                                                                                            |          
 |            | Aluno  | Cursa  |                                                                             |
 | Aluno_Disc |        |        | Tabela associativa entre aluno e Disciplina                                 |
 |            | Disciplina | É cursada |                                                                      |
-|                                                                                                            |         
+|                                                                                                            |   
+|            |            |           |                                                                      |      
 |            | Aluno  | Possui  |                                                                            |
 | Telefone_Aluno |        |             | Tabela para registro dos telefones dos alunos                      |
 |                | Tipo_Telefone | Pertence |                                                                |
 |                                                                                                             |
+|               |                 |        |                                                                 |
 | Tipo_Telefone | Telefones_Aluno | Define | Descrição dos tipos de telefones aceitos.                       |
 |               |                 |        |                                                                 |
 |---------------|-----------------|--------------|-----------------------------------------------------------|
