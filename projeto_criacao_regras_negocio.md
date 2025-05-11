@@ -163,9 +163,22 @@ sis4.com/brmodelo/
 | Contato  |
 | Cod_Turma    | 
 
-![alt text](Assets_projeto_modelagem01/img_projec_departamento.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projec_disciplina.jpg)
+| Departamento |               
+|-----------|               
+| Cód_Departamento |           
+| Nome_Departamento |   
+
+
+| Disciplina |               
+|-----------|               
+| Cód_Disciplina |           
+| Nome_Disciplina |                   
+| Descrição |                   
+| Cod_Departamento |              
+| Num_Alunos |      
+| Carga_Horária |            
+
 
 ![alt text](Assets_projeto_modelagem01/img_projec_historico_turma.jpg)
 
