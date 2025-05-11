@@ -645,28 +645,28 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |             | Prof_Disciplina | Leciona | Tabela para cadastro dos professores da faculdade |
 |             |                 |         |                                                   |
 |                                                                                             |
-|          | Curso | Gera     |                                                               |
-| Turma    |        | Pertence |                                                              |
+|             | Curso           | Gera     |                                                  |
+| Turma       |                 |          | Tabela para registro das turmas em andamento e encerradas |
 
-|          | Aluno | Pertence | Tabela para registro das turmas em andamento e encerradas    |
+|             | Aluno           | Pertence |                                                 |
 |                                                                                         |
 |          | Departamento     | Controla         |                                        |
-|        | Turma            | Gera               |Tabela para cadastro dos cursos oferecidos |
-| Curso    |                   |                 |                                                 |
-|          | Aluno            | Está matriculado |pela faculdade                                 
+|          | Turma            | Gera             |                                            |
+| Curso    |                   |                 |Tabela para cadastro dos cursos oferecidos |
+|          | Aluno            | Está matriculado |pela faculdade                           |                             
 |          | Curso_Disciplina | Possui           |                                           |
 |                                                                                                   |
 |          | Curso            | Está matriculado |                                                  |
-|          | Turma            | Pertence         | Tabela para cadastro de informações sobre os alunos da    |
-| Aluno    | Aluno_disc       | Cursa            | faculdade |                                                          
-|          | Histórico        | Pertence         |                                                           |
+|          | Turma            | Pertence         |                                                          |
+| Aluno    | Aluno_disc       | Cursa            |Tabela para cadastro de informações sobre os alunos da |            
+|          | Histórico        | Pertence         |faculdade                                                  |
 |          | Telenones_Alunos | Possui           |                                                           |
 |                                                                                                            |        
 |          | Aluno_Disc       | Cursa            |                                                           |
 |          | Departamento     | Gerencia         |                                                           |
-|          | Prof_Disciplina  | É lecionada      | Tabela para cadastro das disciplinas que compõem os cursos |
-|          | Curso_Disciplina  | Pertence       | oferecidos pela faculdade                                 |
-| Disciplina |                 |                  |                                                           |
+|          | Prof_Disciplina  | É lecionada      |                                                           |
+| Disciplina |                |                  |Tabela para cadastro das disciplinas que compõem os curso |
+|          | Curso_Disciplina | Perrtence        |oferecidos pela faculdade                                 |
 |          | Disciplina       | Depende          |                                                           |
 |          | Disc_Hist        | Compõe           |                                                           |
 |                                                                                                            |          
