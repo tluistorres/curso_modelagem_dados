@@ -602,9 +602,6 @@ Os dois campos não-chave dependem integralmente da chave primária composta.OK,
 | FK        | Cod_Tipo_Telefone | Número          |
 |           | Tipo_Telefone        | Número           |
 
-
-![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico2FN.jpg)
-
 # **Normalizando as Tabelas: 3FN**
 
 Uma tabela está na 3FN se:
