@@ -179,9 +179,6 @@ sis4.com/brmodelo/
 | Num_Alunos |      
 | Carga_Horária |            
 
-
-![alt text](Assets_projeto_modelagem01/img_projec_historico_turma.jpg)
-
 # **Novas Entidades e Atributos**
 
 | Histórico |               
