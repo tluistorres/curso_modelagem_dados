@@ -1,8 +1,8 @@
-![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
+![alt text](Assets_projeto_modelagem01/img_caneca.jpg)
 
 # **Apresentação**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_modelagem_dados.png)
+![alt text](Assets_projeto_modelagem01/img_projec_modelagem_dados.png)
 
 Banco de Dados para gerenciamento de uma Faculdade.
 
@@ -163,11 +163,11 @@ sis4.com/brmodelo/
 | Contato  |
 | Cod_Turma    | 
 
-![alt text](Assets_projeto_modelagem01/img_projeto_departamento.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_departamento.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_disciplina.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_disciplina.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_historico_turma.jpg)
 
 # **Novas Entidades e Atributos**
 
@@ -200,11 +200,9 @@ sis4.com/brmodelo/
 | Nome_Curso   | 
 | Cod_Departamento |
 
-![alt text](Assets_projeto_modelagem01/img_SQLcaneca.jpg)
-
 # **DER Cardinalidades**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_cardinalidade01.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_cardinalidade01.jpg)
 
 # **Entidade Associativa** 
 
@@ -214,7 +212,7 @@ Contém chaves estrangeiras, cada uma em um relacionamento um-para-muitos da tab
 Sua chave primária, no geral, é composta a partir das colunas de chaves estrangeiras em si.
 Uma tabela associativa também pode ser chamada de: Tabela de Referência Cruzada, Tabela de Intersecção, Tabela de Junção, Tabela de Mapeamento, Tabela de Transição, ou ainda outros nomes.
 
-![alt text](Assets_projeto_modelagem01/img_projeto_rel_muitos_muitos.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_rel_muitos_muitos.jpg)
 
 # **Relacionamentos N:M**
 
@@ -224,11 +222,11 @@ Uma tabela associativa também pode ser chamada de: Tabela de Referência Cruzad
 
 Precisamos gerar Entidades Associativas para os relacionamentos Pertence, Compõe e Ministra.
 
-![alt text](Assets_projeto_modelagem01/img_proj_assoc_curso_disciplina.png)
+![alt text](Assets_projeto_modelagem01/img_projec_assoc_curso_disciplina.png)
 
 # **DER INTERMEDIÁRIO - Após criar as entidades asociativas**
 
-![alt text](Assets_projeto_modelagem01/img_der_intermediario.jpg)
+![alt text](Assets_projeto_modelagem01/img_der_intermed.jpg)
 
 # **Criar um dicionário de Dados**
 
@@ -248,54 +246,56 @@ Fases:
 
 # **Dicionário de Dados: Entidades**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_entidade_professor.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_entidade_professor.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_entidade_.curso.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_entidade_.curso.jpg)
 
-![alt text](Assets_projeto_modelagem01/img`projeto_entidade_historico.jpg)
+![alt text](Assets_projeto_modelagem01/img`projec_entidade_historico.jpg)
 
 
 # **Dicionário de Dados: Atributos**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_departamento.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_departamento.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_professor.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_professor.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_curso.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_curso.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_turma.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_turma.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_aluno.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_aluno.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_aluno01.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_aluno01.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_disciplina.png)
+![alt text](Assets_projeto_modelagem01/img_projec_dicionario_disciplina.png)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_dicionario_historico.jpg)
+                                Entidade Histórico                                     
+| Atributo          | Tipo de Dados    | Cumprim. | Restrições        | Descrição                        |  
+|-------------------|------------------|----------|-------------------|----------------------------------|
+| Cod_Histórico     | Inteiro       | 4 bytes  | PK, NOT NULL | Código de identificação do histórico     |
+| RA                | Caractere     | 8 bytes  | FK, NOT NULL | Código de identificação do aluno         |
+| Período_Realizacao | Inteiro     | 4 bytes  | NOT NULL     | Duração da ralização da disciplina em meses |
 
-![alt text](Assets_projeto_modelagem01/img_projeto_historico_turma.jpg)
 
-
-
-![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitual_completo.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_modeloconceitual_completo.jpg)
 
 # **Projeto Prático : Deriva o Modelo Lógico**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_modeloconceitualDER_completo.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_conceitualDER_completo.jpg)
 
 Aparece novo Relacionamente que deve ser adicionado ao Dicionário de Dados: Aluno/Disciplina.
 
 # **Modelo Lógico**
 
-![alt text](Assets_projeto_modelagem01/img_projeto-relac_ent_modeloconceitual.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_relac_ent_modeloconceitual.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_represent_modelo_logico.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_represent_modelo_logico.jpg)
 
 ## **Utilizar o brModelo**
 
-![alt text](Assets_projeto_modelagem01/img_projeto_relac_logico.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_relac_logico.jpg)
 
-![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico.jpg)
+![alt text](Assets_projeto_modelagem01/img_projec_modelo_logico.jpg)
 
 # **Primeira Forma NormaL**
 
@@ -416,7 +416,7 @@ Uma tabela está na 1ª forma normal quando:
 
 # **DER - Modelo Lógico Completo ( em 1FN)**
 
-![alt text](Assets_projeto_modelagem01/img_modelo_logico_atualizado.jpg)
+![alt text](Assets_projeto_modelagem01/img_modelo_logico_atual.jpg)
 
 # **Normalizando as Tabelas segundo à 2ªFN**
 
@@ -601,6 +601,7 @@ Os dois campos não-chave dependem integralmente da chave primária composta.OK,
 | PK  | Cod_Histórico| Número           |
 | FK        | Cod_Tipo_Telefone | Número          |
 |           | Tipo_Telefone        | Número           |
+
 
 ![alt text](Assets_projeto_modelagem01/img_projeto_modelo_logico2FN.jpg)
 
@@ -865,9 +866,6 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |---------------------|------------------|----------|-------------------|------------------------------------|
 | Cod_Tipo_Telefone   | Inteiro          | 1 byte   | PK, NOT NULL   | Código de identificação do tipo de telefone |
 | Tipo_Telefone       | Caractere        | 12 bytes | NOT NULL       | Nome do tipo de telefone              |
-
-# **Implementação do Banco de Dados**
-
 
 
 ![alt text](Assets_projeto_modelagem01/img_modelo_logico3FN.jpg)
