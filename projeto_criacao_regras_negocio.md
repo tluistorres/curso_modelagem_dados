@@ -713,7 +713,7 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |               |                 |        |                                                                 |
 | Tipo_Telefone | Telefones_Aluno | Define | Descrição dos tipos de telefones aceitos.                       |
 |               |                 |        |                                                                 |
-|---------------|-----------------|--------------|-----------------------------------------------------------|
+
 
 # **Dicionário de Dados Atributos**
 
