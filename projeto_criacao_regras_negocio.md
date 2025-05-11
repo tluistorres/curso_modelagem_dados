@@ -641,8 +641,8 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 |              |            |             |                                            |
 |                                                                                            |
 |              | Departamento | Pertence  |                                                  |
-| Professor   |               |            |                                                   |
-|             | Prof_Disciplina | Leciona | Tabela para cadastro dos professores da faculdade |
+| Professor   |               |            |Tabela para cadastro dos professores da faculdade |
+|             | Prof_Disciplina | Leciona |                                                    |
 |             |                 |         |                                                   |
 |                                                                                             |
 |             | Curso           | Gera     |                                                  |
