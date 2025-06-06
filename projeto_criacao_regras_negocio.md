@@ -900,7 +900,7 @@ Resp.: Nenhuma das operações listadas é capaz de levar o banco de dados a um 
 empregado                               
 |   codigo_empregado  |       nome       |  cod_emp_chefe  |  
 |---------------------|------------------|-----------------|
-|         10          |     Pereira      |       <N>       | 
+|         10          |     Pereira      |       NULL      | 
 |         21          |     Tavares      |        10       | 
 |         30          |     Satos        |        10       |
 |         55          |     Almeida      |        21       | 
@@ -940,7 +940,7 @@ Resp.: Para manter a integridade específica pela chave estrangeira **empregado.
 empregado                               
 |   codigo_empregado  |       nome       |    cod_depto    | cod_emp_chefe  |  
 |---------------------|------------------|-----------------|----------------|
-|         10          |     Pereira      |      100        |      <N>       |
+|         10          |     Pereira      |      100        |      NULL      |
 |         21          |     Tavares      |      101        |       10       |
 |         30          |     Satos        |      100        |       10       |
 |         55          |     Almeida      |      102        |       21       |
@@ -979,5 +979,177 @@ Tabela Empregado
      Observa-se a notação usada parta indicar a auto-referência na tabela empregado.
      Para diferenciar as duas chaves estrangeiras existentes na tabela empregado, usam-se os rótulos 'fk1' e 'fk2'. O fato de a coluna empregado.cod_emp_chefe ser opcional é indicada pelo rótulo 'n'.
 
-Exercício 2.4: Considere o banco de dados de embarques com o conteúdo mostrado na Figura 2.11. A chave primária da tabela embarque é composta pelas colunas cod_peca, cod_fornec e data_embarq.
+ peca                              
+|   codigo_peca      |    nome_peca     |    peso_peca    |    cor_peca    |     cidade_peca     |
+|--------------------|------------------|-----------------|----------------|---------------------|
+|         P1         |     Parafuso     |        5        |     Cinza      |    Porto Alegre     |
+|         P2         |     Arruela      |        5        |     Cinza      |    Porto Alegre     |
+|         P3         |     Mancal       |       25        |    Vermelho    |        Rio          |
+|         P4         |      Eixo        |       15        |     Verde      |        Rio          |
+|         P5         |     Motor        |       65        |    Vermelho    |        <N>          |
+
+ embarque                              
+|  codigo_fornec  |    cod_peca    |   data_embarq   |  qtde_embarq   |  
+|-----------------|----------------|-----------------|----------------|
+|         F1      |      P1        |   2000-01-12    |      300       |
+|         F1      |      P1        |   2000-01-15    |      200       |
+|         F1      |      P2        |   2000-01-12    |      350       |
+|         F1      |      P3        |   2000-01-22    |      250       |
+|         F1      |      P4        |   2000-01-12    |      150       |
+|         F1      |      P5        |   2000-05-14    |      200       |
+|         F2      |      P1        |   2000-01-12    |      300       |
+|         F2      |      P1        |   2000-12-04    |      300       |
+|         F2      |      P2        |   2000-12-04    |      350       |
+|         F2      |      P3        |   2000-12-04    |      250       |
+|         F2      |      P4        |   2000-09-24    |      150       |
+|         F3      |      P2        |   2000-04-04    |      200       |
+|         F3      |      P3        |   2000-10-30    |      350       |
+
+
+ fornecedor            
+|   cod_fornec        |  nome_fornec     |   status_fornec | cidade_fornec  |
+|---------------------|------------------|-----------------|----------------|
+|         F1          |   Antunes       |      5      |     Porto Alegre       |
+|         F2      |     Silva     |      10     |      Porto Alegre    |
+|         F3       |     Souza     |      15       |       Curitiba     |
+|         F6      |     Antunes     |      10        |         Rio     |
+|         F4      |     Machado      |       10        |     <N>        |
+|         F5         |  Barcelos      |      12        |       Rio      |
+
+
+**Figura 2.11: Possível conteúdo para o banco de dados de embarques.**
+
+Exercício 2.4: Considere o banco de dados de embarques com o conteúdo mostrado na **Figura 2.11**. A chave primária da tabela embarque é composta pelas colunas cod_peca, cod_fornec e data_embarq.
       Justifique porque a chave primária da tabela não é composta somente pelas colunas cod_peca e cod_fornec.
+
+Resp.: Caso a chave primária da tabela embarque fosse constituída apenas pelas colunas cod_pec e cod_fornec, a tabela não poderia conter múltiplas linhas de embarques de um mesmo fornecedor para uma mesma peça. Pelo conteúdo da tabela, isto pode acontecer, desde que os embarques ocorram em datas diferentes. Um exemplo são as duas primeiras linhas da tabela embarque.
+
+ embarque                              
+|  codigo_fornec  |    cod_peca    |   data_embarq   |  qtde_embarq   |  
+|-----------------|----------------|-----------------|----------------|
+|         F1      |      P1        |   2000-01-12    |      300       |
+|         F1      |      P1        |   2000-01-15    |      200       |
+|       ....      |                |                 |                |
+
+Ambas as linhas referem-se ao mesmo fornecedor ('F1') e a mesma peça ('P1'),  mas têm diferentes datas de embarque.
+
+Exercício 2.5: Considere o banco de dados de embarques com o conteúdo mostrado na **Figura 2.11**
+
+      Com relação à chave primária da tabela embarque responda: É possível que existam dois embarques da mesma peça pelo mesmo fornecedor em uma determinada data? Justifique a resposta.
+
+Exercício 2.6: Construa um esquema diagramático para o banco de dados acadêmico, usando a notação apresentada neste capítulo.
+
+
+Exercício 2.7: Defina chaves alternativas para todas tabelas que compõe a variante do modelo acadêmico com chaves artificiais **(Figura 2.19)**.
+
+
+Exercício 2.8: Deseja-se construir um banco de dados para armazenar informaões genealógicas. Neste banco de dados, pessoas armazenam informações sobre seus ancestrais e sobre descendentes destes.
+      Cada pessoa é identificada por um código. Para cada pessoa, podem  ser armazenadas várias informações: sexo,
+prenome, sobrenome, data e local de nascimento, bem como data e local de falecimento. Todas estas informações são opcionais. Cada local tem um código e um nome.
+      Para cada união entre pessoas (casamento, união estável, ...), é necessário armazenar as seguintes informações:
+pessoa que é marido, pessoa que é esposa, pessoas que são filhos gerados pela união e data e local da união.
+Novamente, todas estas informações são opcionais.
+      Uma pessoa pode ter participado de várias uniões.
+      Deve ser projetado um banco de dados relacional para armazenar estes dados. O banco de dados deve refletir
+exatamente o enunciado. Se necessário, podem ser criadas chaves prmárias artificiais. O banco de dados projetado não deve conter informações redundantes. Confeccione um esquema o banco de dados usando a notação diagramática vista neste capítulo.
+
+Aqui está um esquema de banco de dados relacional para armazenar informações genealógicas:
+
+Tabelas
+
+1. Pessoa
+    - id_pessoa (PK)
+    - sexo
+    - prenome
+    - sobrenome
+    - data_nascimento
+    - id_local_nascimento (FK)
+    - data_falecimento
+    - id_local_falecimento (FK)
+
+2. Local
+    - id_local (PK)
+    - nome
+
+3. União
+    - id_uniao (PK)
+    - id_marido (FK)
+    - id_esposa (FK)
+    - data_uniao
+    - id_local_uniao (FK)
+
+4. Filho
+    - id_uniao (FK)
+    - id_pessoa (FK)
+
+Relacionamentos
+
+- Uma pessoa pode ter um local de nascimento e um local de falecimento (1:1 opcional)
+- Uma pessoa pode participar de várias uniões (1:N)
+- Uma união é entre duas pessoas (marido e esposa) (N:1)
+- Uma união pode ter vários filhos (1:N)
+
+Chaves
+
+- id_pessoa é a chave primária da tabela Pessoa
+- id_local é a chave primária da tabela Local
+- id_uniao é a chave primária da tabela União
+- A tabela Filho tem uma chave composta (id_uniao, id_pessoa)
+
+Esse esquema de banco de dados reflete as informações necessárias para armazenar dados genealógicos, incluindo pessoas, locais, uniões e filhos. As chaves estrangeiras garantem a integridade dos dados e evitam informações redundantes.
+
+Tabela Pessoa
+
+| Campo | Tipo de Dado | Descrição |
+| --- | --- | --- |
+| id_pessoa | int | Código da pessoa |
+| sexo | varchar | Sexo da pessoa |
+| prenome | varchar | Prenome da pessoa |
+| sobrenome | varchar | Sobrenome da pessoa |
+| data_nascimento | date | Data de nascimento da pessoa |
+| id_local_nascimento | int | Código do local de nascimento |
+| data_falecimento | date | Data de falecimento da pessoa |
+| id_local_falecimento | int | Código do local de falecimento |
+
+Tabela Local
+
+| Campo | Tipo de Dado | Descrição |
+| --- | --- | --- |
+| id_local | int | Código do local |
+| nome | varchar | Nome do local |
+
+Tabela União
+
+| Campo | Tipo de Dado | Descrição |
+| --- | --- | --- |
+| id_uniao | int | Código da união |
+| id_marido | int | Código do marido |
+| id_esposa | int | Código da esposa |
+| data_uniao | date | Data da união |
+| id_local_uniao | int | Código do local da união |
+
+Tabela Filho
+
+| Campo | Tipo de Dado | Descrição |
+| --- | --- | --- |
+| id_uniao | int | Código da união |
+| id_pessoa | int | Código da pessoa (filho) |
+
+Chaves Primárias
+
+- Pessoa: id_pessoa
+- Local: id_local
+- União: id_uniao
+- Filho: (id_uniao, id_pessoa)
+
+Chaves Estrangeiras
+
+- Pessoa: id_local_nascimento → Local(id_local)
+- Pessoa: id_local_falecimento → Local(id_local)
+- União: id_marido → Pessoa(id_pessoa)
+- União: id_esposa → Pessoa(id_pessoa)
+- União: id_local_uniao → Local(id_local)
+- Filho: id_uniao → União(id_uniao)
+- Filho: id_pessoa → Pessoa(id_pessoa)
+
+Essa representação mostra as tabelas com seus campos, tipos de dados e descrições, além das chaves primárias e estrangeiras que garantem a integridade dos dados.
