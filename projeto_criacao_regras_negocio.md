@@ -887,8 +887,7 @@ Exercício 2.1 - Considere a chave estrangeira professor.codigo_depto.
 
     c. a chave estrangeira professor.codigo_depto for alterada para um valor vazio.
 
-departamento   
-                                 
+departamento                                  
 | codigo_depto        | nome_depto       | nivel_depto       | 
 |---------------------|------------------|-------------------|
 |        1            | Informática      | Pós-graduação     | 
@@ -897,6 +896,78 @@ departamento
 
 Resp.: Nenhuma das operações listadas é capaz de levar o banco de dados a um estado inconsistente em relação à chave estrangeira considerada. Portanto, sua execução mão exige nenhuma verificação por parte do SGBD com referência à chave estrangeira do exemplo.
 
-Exercício 2.2 - Considere a chave estrangeira empregado.cod_emp_chefe. Liste quais são as operações de alteração do conteúdo desta tabela (inclusões, exclusões e alterações) nas quais o SGBD deve executar uma verificação para manter esta restrição de integridade. Em cada caso descreva a verificação que deve ser efetuada pelo SGBD.
+
+empregado                               
+|   codigo_empregado  |       nome       |  cod_emp_chefe  |  
+|---------------------|------------------|-----------------|
+|         10          |     Pereira      |       <N>       | 
+|         21          |     Tavares      |        10       | 
+|         30          |     Satos        |        10       |
+|         55          |     Almeida      |        21       | 
+
+# Figura 2.7: Chave estrangeira que referencia a própria tabela.
 
 
+Exercício 2.2 - Considere a chave estrangeira **empregado.cod_emp_chefe**(Figura 2.7). Liste quais são as operações de alteração do conteúdo desta tabela (inclusões, exclusões e alterações) nas quais o SGBD deve executar uma verificação para manter esta restrição de integridade. Em cada caso descreva a verificação que deve ser efetuada pelo SGBD.
+
+Resp.: Para manter a integridade específica pela chave estrangeira **empregado.cod_emp_chefe**, o SGBD deve executar as seguintes verificações:
+
+     - Quando da inclusão de uma linha na tabela;
+
+       Neste caso, deve ser garantido que, caso seja informado um valor para cod_emp_chefe na linha incluída, este valor apareça na coluna codigo_emp.
+
+     - Quando da alteração de cod_emp_chefe para um valor não vazio;
+
+       Deve ser garantido que o novo valor do campo cod_emp_chefe apareça na coluna cod_emp.
+
+     - Quando da exclusão de uma linha na tabela;
+
+       Deve ser garantido que, na coluna cod_emp_chefe não apareça o valor do campo cod_emp da linha que está sendo excluída.
+
+     - Quando da alteração do cod_emp;
+
+       Deve ser garantido que, na coluna cod_emp-chefe, não apareça o antigo valor do campo codigo_emp.
+
+ departamento                             
+|   codigo_depto      |       nome       |  
+|---------------------|------------------|
+|        100          |     Vendas       |      
+|        101          |   Financeiro     |        
+|        102          |    Produção      |        
+   
+
+
+empregado                               
+|   codigo_empregado  |       nome       |    cod_depto    | cod_emp_chefe  |  
+|---------------------|------------------|-----------------|----------------|
+|         10          |     Pereira      |      100        |      <N>       |
+|         21          |     Tavares      |      101        |       10       |
+|         30          |     Satos        |      100        |       10       |
+|         55          |     Almeida      |      102        |       21       |
+
+# Tabela 2.9: Tabelas para o exercício 2.3.
+
+
+Exercício 2.3: Considere o banco de dados da **Figura 2.9**. Considere que existam duas chaves estrangeiras:
+
+      - empregado.codigo_depto referencia departamento, e
+      - empregado.cod_em_chefe referncia empregado.
+
+Considere que a coluna empregado.cod_emp_chefe é opcional e que as demais colunas são obrigatórias.
+      Represente o esquema deste banco de daddos na notação introduzida nesta seção.
+
+Resp.: 
+                                                                                                                    
+                          
+|    departamento     |          |    empregado            |
+|---------------------|          |-------------------------|
+|    codigo_dpto      |<---------|    cod_emp              |
+|    nome             |          |    nome                 |       
+                                 |    codigo_depto (fk1)   |             
+                                 |    codigo_depto (fk2,n) |
+   
+     Observa-se a notação usada parta indicar a auto-referência na tabela empregado.
+     Para diferenciar as duas chaves estrangeiras existentes na tabela empregado, usam-se os rótulos 'fk1' e 'fk2'. O fato de a coluna empregado.cod_emp_chefe ser opcional é indicada pelo rótulo 'n'.
+
+Exercício 2.4: Considere o banco de dados de embarques com o conteúdo mostrado na Figura 2.11. A chave primária da tabela embarque é composta pelas colunas cod_peca, cod_fornec e data_embarq.
+      Justifique porque a chave primária da tabela não é composta somente pelas colunas cod_peca e cod_fornec.
