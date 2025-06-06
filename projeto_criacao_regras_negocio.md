@@ -1179,40 +1179,45 @@ Essa representação mostra as tabelas com seus campos, tipos de dados e descri�
 
 # SQL para criar as tabelas e relacionamentos
 
+``` sqp
 
 CREATE TABLE Local (
- id_local INT PRIMARY KEY,
- nome VARCHAR(255)
+    id_local INT PRIMARY KEY,
+    nome VARCHAR(255)
 );
 
 CREATE TABLE Pessoa (
- id_pessoa INT PRIMARY KEY,
- sexo VARCHAR(1),
- prenome VARCHAR(255),
- sobrenome VARCHAR(255),
- data_nascimento DATE,
- id_local_nascimento INT,
- data_falecimento DATE,
- id_local_falecimento INT,
- FOREIGN KEY (id_local_nascimento) REFERENCES Local(id_local),
- FOREIGN KEY (id_local_falecimento) REFERENCES Local(id_local)
+    id_pessoa INT PRIMARY KEY,
+    sexo VARCHAR(1),
+    prenome VARCHAR(255),
+    sobrenome VARCHAR(255),
+    data_nascimento DATE,
+    id_local_nascimento INT,
+    data_falecimento DATE,
+    id_local_falecimento INT,
+    FOREIGN KEY (id_local_nascimento) REFERENCES Local(id_local),
+    FOREIGN KEY (id_local_falecimento) REFERENCES Local(id_local)
 );
 
 CREATE TABLE Uniao (
- id_uniao INT PRIMARY KEY,
- id_marido INT,
- id_esposa INT,
- data_uniao DATE,
- id_local_uniao INT,
- FOREIGN KEY (id_marido) REFERENCES Pessoa(id_pessoa),
- FOREIGN KEY (id_esposa) REFERENCES Pessoa(id_pessoa),
- FOREIGN KEY (id_local_uniao) REFERENCES Local(id_local)
+    id_uniao INT PRIMARY KEY,
+    id_marido INT,
+    id_esposa INT,
+    data_uniao DATE,
+    id_local_uniao INT,
+    FOREIGN KEY (id_marido) REFERENCES Pessoa(id_pessoa),
+    FOREIGN KEY (id_esposa) REFERENCES Pessoa(id_pessoa),
+    FOREIGN KEY (id_local_uniao) REFERENCES Local(id_local)
 );
 
 CREATE TABLE Filho (
- id_uniao INT,
- id_pessoa INT,
- PRIMARY KEY (id_uniao, id_pessoa),
- FOREIGN KEY (id_uniao) REFERENCES Uniao(id_uniao),
- FOREIGN KEY (id_pessoa) REFERENCES Pessoa(id_pessoa)
+    id_uniao INT,
+    id_pessoa INT,
+    PRIMARY KEY (id_uniao, id_pessoa),
+    FOREIGN KEY (id_uniao) REFERENCES Uniao(id_uniao),
+    FOREIGN KEY (id_pessoa) REFERENCES Pessoa(id_pessoa)
 );
+
+```
+
+Obs.: Com os três acentos graves (``) e a especificação da linguagem (`sql), o código será renderizado corretamente no GitHub com a formatação e identação certas.
