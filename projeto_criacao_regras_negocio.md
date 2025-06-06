@@ -986,7 +986,7 @@ Tabela Empregado
 |         P2         |     Arruela      |        5        |     Cinza      |    Porto Alegre     |
 |         P3         |     Mancal       |       25        |    Vermelho    |        Rio          |
 |         P4         |      Eixo        |       15        |     Verde      |        Rio          |
-|         P5         |     Motor        |       65        |    Vermelho    |        <N>          |
+|         P5         |     Motor        |       65        |    Vermelho    |        NULL        |
 
  embarque                              
 |  codigo_fornec  |    cod_peca    |   data_embarq   |  qtde_embarq   |  
@@ -1013,7 +1013,7 @@ Tabela Empregado
 |         F2      |     Silva     |      10     |      Porto Alegre    |
 |         F3       |     Souza     |      15       |       Curitiba     |
 |         F6      |     Antunes     |      10        |         Rio     |
-|         F4      |     Machado      |       10        |     <N>        |
+|         F4      |     Machado      |       10        |     NULL       |
 |         F5         |  Barcelos      |      12        |       Rio      |
 
 
@@ -1153,3 +1153,66 @@ Chaves Estrangeiras
 - Filho: id_pessoa → Pessoa(id_pessoa)
 
 Essa representação mostra as tabelas com seus campos, tipos de dados e descrições, além das chaves primárias e estrangeiras que garantem a integridade dos dados.
+
+
+# Relacionamentos
+
+
+1. Pessoa - Local (Nascimento)
+- Uma pessoa pode ter um local de nascimento (1:1 opcional)
+- Tabela Pessoa tem uma chave estrangeira id_local_nascimento que referencia a tabela Local
+1. Pessoa - Local (Falecimento)
+- Uma pessoa pode ter um local de falecimento (1:1 opcional)
+- Tabela Pessoa tem uma chave estrangeira id_local_falecimento que referencia a tabela Local
+1. União - Pessoa (Marido)
+- Uma união tem um marido (N:1)
+- Tabela União tem uma chave estrangeira id_marido que referencia a tabela Pessoa
+1. União - Pessoa (Esposa)
+- Uma união tem uma esposa (N:1)
+- Tabela União tem uma chave estrangeira id_esposa que referencia a tabela Pessoa
+1. União - Local
+- Uma união pode ter um local (1:1 opcional)
+- Tabela União tem uma chave estrangeira id_local_uniao que referencia a tabela Local
+1. União - Filho
+- Uma união pode ter vários filhos (1:N)
+- Tabela Filho tem chaves estrangeiras id_uniao e id_pessoa que referenciam as tabelas União e Pessoa, respectivamente
+
+# SQL para criar as tabelas e relacionamentos
+
+
+CREATE TABLE Local (
+ id_local INT PRIMARY KEY,
+ nome VARCHAR(255)
+);
+
+CREATE TABLE Pessoa (
+ id_pessoa INT PRIMARY KEY,
+ sexo VARCHAR(1),
+ prenome VARCHAR(255),
+ sobrenome VARCHAR(255),
+ data_nascimento DATE,
+ id_local_nascimento INT,
+ data_falecimento DATE,
+ id_local_falecimento INT,
+ FOREIGN KEY (id_local_nascimento) REFERENCES Local(id_local),
+ FOREIGN KEY (id_local_falecimento) REFERENCES Local(id_local)
+);
+
+CREATE TABLE Uniao (
+ id_uniao INT PRIMARY KEY,
+ id_marido INT,
+ id_esposa INT,
+ data_uniao DATE,
+ id_local_uniao INT,
+ FOREIGN KEY (id_marido) REFERENCES Pessoa(id_pessoa),
+ FOREIGN KEY (id_esposa) REFERENCES Pessoa(id_pessoa),
+ FOREIGN KEY (id_local_uniao) REFERENCES Local(id_local)
+);
+
+CREATE TABLE Filho (
+ id_uniao INT,
+ id_pessoa INT,
+ PRIMARY KEY (id_uniao, id_pessoa),
+ FOREIGN KEY (id_uniao) REFERENCES Uniao(id_uniao),
+ FOREIGN KEY (id_pessoa) REFERENCES Pessoa(id_pessoa)
+);
