@@ -959,12 +959,22 @@ Considere que a coluna empregado.cod_emp_chefe é opcional e que as demais colun
 Resp.: 
                                                                                                                     
                           
-|    departamento     |          |    empregado            |
-|---------------------|          |-------------------------|
-|    codigo_dpto      |<---------|    cod_emp              |
-|    nome             |          |    nome                 |       
-                                 |    codigo_depto (fk1)   |             
-                                 |    codigo_depto (fk2,n) |
+
+Tabela Departamento
+| departamento |
+|--------------|
+| codigo_dpto  |
+| nome         |
+
+↔️ Relacionamento (1:N)
+
+Tabela Empregado
+| empregado      |
+|----------------|
+| cod_emp        |
+| nome           |
+| codigo_depto   |
+
    
      Observa-se a notação usada parta indicar a auto-referência na tabela empregado.
      Para diferenciar as duas chaves estrangeiras existentes na tabela empregado, usam-se os rótulos 'fk1' e 'fk2'. O fato de a coluna empregado.cod_emp_chefe ser opcional é indicada pelo rótulo 'n'.
