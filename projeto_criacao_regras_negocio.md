@@ -876,3 +876,27 @@ Estas tabelas estão prontas para implementação no Banco de Dados.
 
 
 ![alt text](Assets_projeto_modelagem01/img_modelo_logico3FN.jpg)
+
+Exercício 2.1 - Considere a chave estrangeira professor.codigo_depto.
+  
+   Explique quais verificações devem ser realizadas pelo SGBD, quando:
+
+    a. uma linha da tabela departamento for incluída,
+
+    b. uma linha da tabela professor for excluída,
+
+    c. a chave estrangeira professor.codigo_depto for alterada para um valor vazio.
+
+departamento   
+                                 
+| codigo_depto        | nome_depto       | nivel_depto       | 
+|---------------------|------------------|-------------------|
+|        1            | Informática      | Pós-graduação     | 
+|        2            | Administração    | Graduação         | 
+|        3            | Medicina         | Graduação         |
+
+Resp.: Nenhuma das operações listadas é capaz de levar o banco de dados a um estado inconsistente em relação à chave estrangeira considerada. Portanto, sua execução mão exige nenhuma verificação por parte do SGBD com referência à chave estrangeira do exemplo.
+
+Exercício 2.2 - Considere a chave estrangeira empregado.cod_emp_chefe. Liste quais são as operações de alteração do conteúdo desta tabela (inclusões, exclusões e alterações) nas quais o SGBD deve executar uma verificação para manter esta restrição de integridade. Em cada caso descreva a verificação que deve ser efetuada pelo SGBD.
+
+
