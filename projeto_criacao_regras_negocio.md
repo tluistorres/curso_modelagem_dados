@@ -1221,3 +1221,144 @@ CREATE TABLE Filho (
 ```
 
 Obs.: Com os três acentos graves (``) e a especificação da linguagem (`sql), o código será renderizado corretamente no GitHub com a formatação e identação certas.
+
+## Ágebra Relacional
+
+empregado                               
+|   codigo_empregado  |       nome       |    cod_depto    |  funcao   |      CPF      |     
+|---------------------|------------------|-----------------|-----------|---------------|
+|         E1          |     Souza        |      D1         |    <N>    |  13212133120  |
+|         E2          |     Santos       |      D2         |     C5    |  89122111111  |
+|         E3          |     Silva        |      D2         |     C5    |  34151177545  |
+|         E5          |     Soares       |      D1         |     C2    |  63169275488  |
+
+## Figura Tabela empregado com campo funcao vazio para o empregado
+
+**Exemplo 3.17**(pag. 104) do Livro Banco de Dados Relacioanal.
+
+Obter os dados do empregados cuja função é 'C5'. **Código em álbebra Relaciona?**
+
+Para obter os dados dos empregados cuja função é 'C5', você pode usar a operação de seleção (σ) da álgebra relacional.
+
+A expressão seria:
+
+σ funcao = 'C5' (empregado)
+
+Isso significa: "Selecione os tuplas da relação 'empregado' onde a função é igual a 'C5'".
+
+O resultado será:
+
+| codigo_empregado | nome | cod_depto | funcao |
+|------------------|---------|-----------|--------|
+| E2 | Santos | D2 | C5 |
+| E3 | Silva | D2 | C5 |
+
+Essa expressão retorna apenas as linhas da tabela onde a função é 'C5'.
+
+Obs.: Obter os dados do empregados cuja função é 'C5'. **Código em SQL?**
+
+Para obter os dados dos empregados cuja função é 'C5', você pode usar a seguinte consulta SQL:
+
+
+SELECT *
+FROM empregado
+WHERE funcao = 'C5';
+
+
+Essa consulta:
+
+- SELECT * seleciona todas as colunas da tabela.
+- FROM empregado especifica a tabela que você está consultando.
+- WHERE funcao = 'C5' filtra os resultados para apenas as linhas onde a função é 'C5'.
+
+O resultado seria:
+
+| codigo_empregado | nome    | cod_depto | funcao |
+|------------------|---------|-----------|--------|
+| E2               | Santos  | D2        | C5     |
+| E3               | Silva   | D2        | C5     |
+
+Essa consulta retorna apenas as linhas da tabela onde a função é 'C5'.
+
+**Exemplo 3.18**. Obter os dados dos empregados cuja função, quando informada (não vazia), é diferente de 'C2'**(Código em Álgebra Relacional).**
+
+σ funcao ≠ 'C2' AND funcao ≠ NULL (empregado)
+
+ou de forma mais comum:
+
+σ funcao ≠ 'C2' AND funcao IS NOT NULL (empregado) ou σ funcao <>'C2' AND funcao IS NOT NULL (empregado)
+
+Essa expressão significa:
+
+- Selecione os tuplas da relação 'empregado' onde:
+- A função é diferente de 'C2' (funcao ≠ 'C2')
+- A função não é nula (funcao IS NOT NULL ou funcao ≠ NULL, dependendo da notação usada)
+  
+**σ funcao <> 'C2' AND funcao IS NOT NULL (empregado)**
+
+A saída seria:
+
+| codigo_empregado | nome    | cod_depto | funcao | CPF         |
+|------------------|---------|-----------|--------|-------------|
+| E2               | Santos  | D2        | C5     | 89122111111 |
+| E3               | Silva   | D2        | C5     | 34151177545 |
+
+**Exemplo 3.19**. Obter os dados dos empregados que tem função informada.
+
+Álgebra Relacional:
+
+σ funcao IS NOT NULL (empregado)
+
+Essa expressão seleciona os tuplas da relação 'empregado' onde a função não é nula.
+
+SQL:
+
+
+SELECT *
+FROM empregado
+WHERE funcao IS NOT NULL;
+
+Essa consulta seleciona todas as colunas da tabela 'empregado' onde a função não é nula.
+
+Ambas as expressões retornam os empregados que têm uma função informada, ou seja, onde o campo "funcao" não é vazio ou nulo.
+
+Com base na tabela que você forneceu anteriormente, a saída seria:
+
+| codigo_empregado | nome    | cod_depto | funcao | CPF         |
+|------------------|---------|-----------|--------|-------------|
+| E2               | Santos  | D2        | C5     | 89122111111 |
+| E3               | Silva   | D2        | C5     | 34151177545 |
+| E5               | Soares  | D1        | C2     | 63169275488 |
+
+Obs.: a saída da expressão:
+
+ σ funcao = 'C5' (empregado) U σ funcao <> 'C5' (empregado) é:
+
+
+| codigo_empregado | nome    | cod_depto | funcao | CPF         |
+|------------------|---------|-----------|--------|-------------|
+| E2               | Santos  | D2        | C5     | 89122111111 |
+| E3               | Silva   | D2        | C5     | 34151177545 |
+| E5               | Soares  | D1        | C2     | 63169275488 |
+
+  - É a mesma saída que o código σ funcao IS NOT NULL (empregado), porque a união das duas condições (funcao = 'C5' e funcao <> 'C5') efetivamente seleciona todas as linhas que têm uma função não nula.
+  
+**Exemplo 3.19**. Obter os dados dos empregados cuja função é diferente de 'C2', inclusive daqueles que não tem função informada (campo funcao é NULL).
+
+Para obter os dados dos empregados cuja função é diferente de 'C2', incluindo aqueles que não têm função informada (campo funcao é NULL), você pode usar a seguinte expressão em Álgebra Relacional:
+
+ **σ funcao <> 'C2' OR funcao IS NULL (empregado)**
+
+E em SQL:
+
+SELECT *
+FROM empregado
+WHERE funcao <> 'C2' OR funcao IS NULL;
+
+  - Saída:
+  
+| codigo_empregado | nome    | cod_depto | funcao | CPF         |
+|------------------|---------|-----------|--------|-------------|
+| E1               | Souza   | D1        | NULL   | 13212133120 |
+| E2               | Santos  | D2        | C5     | 89122111111 |
+| E3               | Silva   | D2        | C5     | 34151177545 |
