@@ -1362,3 +1362,79 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 | E1               | Souza   | D1        | NULL   | 13212133120 |
 | E2               | Santos  | D2        | C5     | 89122111111 |
 | E3               | Silva   | D2        | C5     | 34151177545 |
+
+**Exercício 3.21 (Banco de dados acadêmico) - Apêndice B --> p.555.**
+
+ depto
+| cod_depto | nome_depto | 
+|-----------|------------|
+|   INF01   | Informática  | 
+|   MED01   | Medicina Interna | 
+|   MAT01   | Matemática   |
+|   FIS01   |   Física   |
+
+ disciplina
+| cod_depto    | num_disc | nome_disc               | creditos_disc |
+|--------------|-------- -|-------------------------|---------------|
+| MAT01        |   101    |  Cálculo Diferencial    |       4       |
+| MAT01        |   102    | Algebra Linear          |       4       | 
+| MAT01        |   103    | Geometria analítica     |       4       | 
+| INF01        |   101    | Programação FORTRAN     |       4       |
+| INF01        |   102    | Agoritmos e progrqmqção |       6       |
+| INF01        |   103    | Estrutura de dados      |       4       |
+| INF01        |   104    | Programação lógica      |       4       |
+| INF01        |   105    | Teoria da computção     |       4       |
+| INF01        |   106    | Banco de dados          |       4       |
+| INF01        |   107    | Linguagens formais      |       2       |
+| INF01        |   108    | Compiladores            |       4       |
+| INF01        |   109    | Classificação e pesquisa|       6       |
+
+
+ prereq
+| cod_depto    | num_disc | cod_depto_prereq        | num_disc_prereq |
+|--------------|-------- -|-------------------------|-----------------|
+|  INF01       |   109    |   INF01                  |      107        |
+|  INF01       |   109    |   INF01                  |      108        | 
+|  INF01       |   108    |   INF01                  |      106        | 
+|  INF01       |   108    |   INF01                  |      105        |
+|  INF01       |   107    |   INF01                  |      104        |
+|  INF01       |   106    |   INF01                  |      104        |
+|  INF01       |   105    |   INF01                  |      104        |
+|  INF01       |   104    |   INF01                  |      102        |
+|  INF01       |   103    |   INF01                  |      102        |
+|  MAT01       |   103    |   MAT01                  |      101        |
+
+
+ oferta
+| ano_sem      | cod_depto | num_disc      | sigla_ofer    |  capacidade_ofer |
+|--------------|-------- -|----------------|---------------|------------------|
+|  20211       | MAT01    |     101        |       A       |       40         |
+|  20211       | MAT01    |     101        |       B       |       40         |
+|  20211       | MAT01    |     101        |       C       |       40         |
+|  20211       | INF01    |     101        |       A       |       40         |
+|  20211       | INF01    |     101        |       B       |       40         |
+|  20211       | INF01    |     102        |       A       |       20         |
+|  20211       | INF01    |     102        |       B       |       20         |
+|  20211       | INF01    |     102        |       C       |       20         |
+|  20211       | INF01    |     103        |       U       |       60         |
+|  20211       | INF01    |     104        |       U       |       40         |
+|  20211       | INF01    |     105        |       U       |       40         |
+|  20211       | INF01    |     106        |       A       |       30         |
+|  20211       | INF01    |     106        |       B       |       30         |
+|  20021       | INF01    |     107        |       U       |       70         |
+|  20021       | INF01    |     108        |       U       |       40         |
+|  20021       | INF01    |     109        |       U       |       40         |
+|  20022       | MAT01    |     102        |       A       |       40         |
+|  20022       | MAT01    |     102        |       B       |       40         |
+|  20022       | MAT01    |     102        |       C       |       40         |
+|  20022       | INF01    |     101        |       U       |       20         |
+|  20022       | INF01    |     102        |       A       |       20         |
+|  20022       | INF01    |     102        |       B       |       20         |
+|  20022       | INF01    |     102        |       C       |       20         |
+|  20022       | INF01    |     103        |       U       |       60         |
+|  20022       | INF01    |     104        |       U       |       40         |
+|  20022       | INF01    |     105        |       U       |       40         |
+|  20022       | INF01    |     106        |       U       |       70         |
+|  20022       | INF01    |     107        |       A       |       30         |
+|  20022       | INF01    |     107        |       B       |       40         |
+|  20022       | INF01    |     109        |       U       |       40         |
