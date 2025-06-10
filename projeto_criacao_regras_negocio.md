@@ -1373,68 +1373,64 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 |   MAT01   | Matemática   |
 |   FIS01   |   Física   |
 
- disciplina
-| cod_depto    | num_disc | nome_disc               | creditos_disc |
-|--------------|-------- -|-------------------------|---------------|
-| MAT01        |   101    |  Cálculo Diferencial    |       4       |
-| MAT01        |   102    | Algebra Linear          |       4       | 
-| MAT01        |   103    | Geometria analítica     |       4       | 
-| INF01        |   101    | Programação FORTRAN     |       4       |
-| INF01        |   102    | Agoritmos e progrqmqção |       6       |
-| INF01        |   103    | Estrutura de dados      |       4       |
-| INF01        |   104    | Programação lógica      |       4       |
-| INF01        |   105    | Teoria da computção     |       4       |
-| INF01        |   106    | Banco de dados          |       4       |
-| INF01        |   107    | Linguagens formais      |       2       |
-| INF01        |   108    | Compiladores            |       4       |
-| INF01        |   109    | Classificação e pesquisa|       6       |
+ | disciplina | cod_depto | num_disc | nome_disc | creditos_disc |
+|------------|-----------|----------|-------------------------|---------------|
+| MAT01      | 101       | 1        | Cálculo Diferencial     | 4             |
+| MAT01      | 102       | 2        | Álgebra Linear          | 4             |
+| MAT01      | 103       | 3        | Geometria Analítica     | 4             |
+| INF01      | 101       | 1        | Programação FORTRAN     | 4             |
+| INF01      | 102       | 2        | Algoritmos e Programação| 6             |
+| INF01      | 103       | 3        | Estrutura de Dados      | 4             |
+| INF01      | 104       | 4        | Programação Lógica      | 4             |
+| INF01      | 105       | 5        | Teoria da Computação    | 4             |
+| INF01      | 106       | 6        | Banco de Dados          | 4             |
+| INF01      | 107       | 7        | Linguagens Formais      | 2             |
+| INF01      | 108       | 8        | Compiladores            | 4             |
+| INF01      | 109       | 9        | Classificação e Pesquisa| 6             |
 
 
- prereq
-| cod_depto    | num_disc | cod_depto_prereq        | num_disc_prereq |
-|--------------|-------- -|-------------------------|-----------------|
-|  INF01       |   109    |   INF01                  |      107        |
-|  INF01       |   109    |   INF01                  |      108        | 
-|  INF01       |   108    |   INF01                  |      106        | 
-|  INF01       |   108    |   INF01                  |      105        |
-|  INF01       |   107    |   INF01                  |      104        |
-|  INF01       |   106    |   INF01                  |      104        |
-|  INF01       |   105    |   INF01                  |      104        |
-|  INF01       |   104    |   INF01                  |      102        |
-|  INF01       |   103    |   INF01                  |      102        |
-|  MAT01       |   103    |   MAT01                  |      101        |
+| disciplina | cod_depto | num_disc | disciplina_prereq | cod_depto_prereq | num_disc_prereq |
+|------------|-----------|----------|-------------------|-----------------|-----------------|
+| INF01      | 109       | 9        | INF01             | 107             | 7               |
+| INF01      | 109       | 9        | INF01             | 108             | 8               |
+| INF01      | 108       | 8        | INF01             | 106             | 6               |
+| INF01      | 108       | 8        | INF01             | 105             | 5               |
+| INF01      | 107       | 7        | INF01             | 104             | 4               |
+| INF01      | 106       | 6        | INF01             | 104             | 4               |
+| INF01      | 105       | 5        | INF01             | 104             | 4               |
+| INF01      | 104       | 4        | INF01             | 102             | 2               |
+| INF01      | 103       | 3        | INF01             | 102             | 2               |
+| MAT01      | 103       | 3        | MAT01             | 101             | 1               |
 
-
- oferta
-| ano_sem      | cod_depto | num_disc      | sigla_ofer    |  capacidade_ofer |
-|--------------|-------- -|----------------|---------------|------------------|
-|  20211       | MAT01    |     101        |       A       |       40         |
-|  20211       | MAT01    |     101        |       B       |       40         |
-|  20211       | MAT01    |     101        |       C       |       40         |
-|  20211       | INF01    |     101        |       A       |       40         |
-|  20211       | INF01    |     101        |       B       |       40         |
-|  20211       | INF01    |     102        |       A       |       20         |
-|  20211       | INF01    |     102        |       B       |       20         |
-|  20211       | INF01    |     102        |       C       |       20         |
-|  20211       | INF01    |     103        |       U       |       60         |
-|  20211       | INF01    |     104        |       U       |       40         |
-|  20211       | INF01    |     105        |       U       |       40         |
-|  20211       | INF01    |     106        |       A       |       30         |
-|  20211       | INF01    |     106        |       B       |       30         |
-|  20021       | INF01    |     107        |       U       |       70         |
-|  20021       | INF01    |     108        |       U       |       40         |
-|  20021       | INF01    |     109        |       U       |       40         |
-|  20022       | MAT01    |     102        |       A       |       40         |
-|  20022       | MAT01    |     102        |       B       |       40         |
-|  20022       | MAT01    |     102        |       C       |       40         |
-|  20022       | INF01    |     101        |       U       |       20         |
-|  20022       | INF01    |     102        |       A       |       20         |
-|  20022       | INF01    |     102        |       B       |       20         |
-|  20022       | INF01    |     102        |       C       |       20         |
-|  20022       | INF01    |     103        |       U       |       60         |
-|  20022       | INF01    |     104        |       U       |       40         |
-|  20022       | INF01    |     105        |       U       |       40         |
-|  20022       | INF01    |     106        |       U       |       70         |
-|  20022       | INF01    |     107        |       A       |       30         |
-|  20022       | INF01    |     107        |       B       |       40         |
-|  20022       | INF01    |     109        |       U       |       40         |
+ | ano_sem | disciplina | cod_depto | num_disc | sigla_ofer | capacidade_ofer |
+|---------|------------|-----------|----------|------------|-----------------|
+| 20211   | MAT01      | 101       | 1        | A          | 40              |
+| 20211   | MAT01      | 101       | 1        | B          | 40              |
+| 20211   | MAT01      | 101       | 1        | C          | 40              |
+| 20211   | INF01      | 101       | 1        | A          | 40              |
+| 20211   | INF01      | 101       | 1        | B          | 40              |
+| 20211   | INF01      | 102       | 2        | A          | 20              |
+| 20211   | INF01      | 102       | 2        | B          | 20              |
+| 20211   | INF01      | 102       | 2        | C          | 20              |
+| 20211   | INF01      | 103       | 3        | U          | 60              |
+| 20211   | INF01      | 104       | 4        | U          | 40              |
+| 20211   | INF01      | 105       | 5        | U          | 40              |
+| 20211   | INF01      | 106       | 6        | A          | 30              |
+| 20211   | INF01      | 106       | 6        | B          | 30              |
+| 20021   | INF01      | 107       | 7        | U          | 70              |
+| 20021   | INF01      | 108       | 8        | U          | 40              |
+| 20021   | INF01      | 109       | 9        | U          | 40              |
+| 20022   | MAT01      | 102       | 2        | A          | 40              |
+| 20022   | MAT01      | 102       | 2        | B          | 40              |
+| 20022   | MAT01      | 102       | 2        | C          | 40              |
+| 20022   | INF01      | 101       | 1        | U          | 20              |
+| 20022   | INF01      | 102       | 2        | A          | 20              |
+| 20022   | INF01      | 102       | 2        | B          | 20              |
+| 20022   | INF01      | 102       | 2        | C          | 20              |
+| 20022   | INF01      | 103       | 3        | U          | 60              |
+| 20022   | INF01      | 104       | 4        | U          | 40              |
+| 20022   | INF01      | 105       | 5        | U          | 40              |
+| 20022   | INF01      | 106       | 6        | U          | 70              |
+| 20022   | INF01      | 107       | 7        | A          | 30              |
+| 20022   | INF01      | 107       | 7        | B          | 40              |
+| 20022   | INF01      | 109       | 9        | U          | 40              |
