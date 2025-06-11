@@ -578,35 +578,25 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 
 **Figura 1.1: Arquivos em um banco de dados de uma universidade**
 
-    departamento
-_______
-|                     |
-|  Cod_depto (PK)    |
-|  Nome_dpto          |
-|  nivel_dpto         |
-|_______|
+    Modelo Conceitual
+Departamento
+| Atributo | Descrição |
+| --- | --- |
+| Cod_depto (PK) | Código do departamento |
+| Nome_dpto | Nome do departamento |
+| nivel_dpto | Nível do departamento |
 
-professor
-_______
-|                     |
-|  Cod_Prof (PK)     |
-|  Nome_Prof          |
-|  titulacao_prof     |
-|  codigo_depto (FK) |
-|_______|
+Professor
+| Atributo | Descrição |
+| --- | --- |
+| Cod_Prof (PK) | Código do professor |
+| Nome_Prof | Nome do professor |
+| titulacao_prof | Titulação do professor |
+| codigo_depto (FK) | Código do departamento |
 
-Relacionamento:
-+---------------+
-|  Pertence a  |
-+---------------+
-|  (N:1)       |
-+---------------+
-|
-|
-v
-+---------------+      +---------------+
-|  departamento  |      |  professor    |
-+---------------+      +---------------+
+Relacionamento
+- Pertence a: Um professor pertence a um departamento (N:1)
+
 
 **Figura 1.2: Exemplo de modelo conceitual**
 
