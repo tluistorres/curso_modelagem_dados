@@ -578,10 +578,35 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 
 **Figura 1.1: Arquivos em um banco de dados de uma universidade**
 
-    professor ------------ n:1 ------------ departamento
+    departamento
+_______
+|                     |
+|  Cod_depto (PK)    |
+|  Nome_dpto          |
+|  nivel_dpto         |
+|_______|
 
-     - Atributos/professor: titulação, código e nome
-     - AAtributos/departamento: nível, código e nome
+professor
+_______
+|                     |
+|  Cod_Prof (PK)     |
+|  Nome_Prof          |
+|  titulacao_prof     |
+|  codigo_depto (FK) |
+|_______|
+
+Relacionamento:
++---------------+
+|  Pertence a  |
++---------------+
+|  (N:1)       |
++---------------+
+|
+|
+v
++---------------+      +---------------+
+|  departamento  |      |  professor    |
++---------------+      +---------------+
 
 **Figura 1.2: Exemplo de modelo conceitual**
 
@@ -602,27 +627,3 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 **Figura 1.3: Esquema gráfico para o banco de dados.**
 
 
-Entidades:
-
-- Departamento (retângulo)
-- Cod_depto
-- Nome_dpto
-- nivel_dpto
-- Professor (retângulo)
-- Cod_Prof
-- Nome_Prof
-- titulacao_prof
-
-Relacionamento:
-
-- Pertence a (losango)
-- Relacionamento entre Professor e Departamento
-- Cardinalidade: N:1 (um professor pertence a um departamento, um departamento pode ter muitos professores)
-
-A representação gráfica seria:
-
-Departamento (retângulo)
-|
-| Pertence a (losango)
-| /
-Professor (retângulo)
