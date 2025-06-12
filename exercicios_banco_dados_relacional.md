@@ -68,7 +68,7 @@ empregado
 |         30          |     Satos        |      100        |       10       |
 |         55          |     Almeida      |      102        |       21       |
 
-**Tabela 2.9: Tabelas para o exercício 2.3.**
+**Tabela 2.9: Tabelas para o exercício 2.3.** -> p.45.
 
 
 **Exercício 2.3: Considere o banco de dados da **Figura 2.9**. Considere que existam duas chaves estrangeiras:
@@ -491,74 +491,131 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
  depto
 | cod_depto | nome_depto | 
 |-----------|------------|
-|   INF01   | Informática  | 
-|   MED01   | Medicina Interna | 
-|   MAT01   | Matemática   |
-|   FIS01   |   Física   |
-
- | disciplina | cod_depto | num_disc | nome_disc | creditos_disc |
-|------------|-----------|----------|-------------------------|---------------|
-| MAT01      | 101       | 1        | Cálculo Diferencial     | 4             |
-| MAT01      | 102       | 2        | Álgebra Linear          | 4             |
-| MAT01      | 103       | 3        | Geometria Analítica     | 4             |
-| INF01      | 101       | 1        | Programação FORTRAN     | 4             |
-| INF01      | 102       | 2        | Algoritmos e Programação| 6             |
-| INF01      | 103       | 3        | Estrutura de Dados      | 4             |
-| INF01      | 104       | 4        | Programação Lógica      | 4             |
-| INF01      | 105       | 5        | Teoria da Computação    | 4             |
-| INF01      | 106       | 6        | Banco de Dados          | 4             |
-| INF01      | 107       | 7        | Linguagens Formais      | 2             |
-| INF01      | 108       | 8        | Compiladores            | 4             |
-| INF01      | 109       | 9        | Classificação e Pesquisa| 6             |
+| INF01   | Informática  | 
+| MED01   | Medicina Interna | 
+| MAT01   | Matemática   |
+| FIS01   |   Física   |
 
 
-| disciplina | cod_depto | num_disc | disciplina_prereq | cod_depto_prereq | num_disc_prereq |
-|------------|-----------|----------|-------------------|-----------------|-----------------|
-| INF01      | 109       | 9        | INF01             | 107             | 7               |
-| INF01      | 109       | 9        | INF01             | 108             | 8               |
-| INF01      | 108       | 8        | INF01             | 106             | 6               |
-| INF01      | 108       | 8        | INF01             | 105             | 5               |
-| INF01      | 107       | 7        | INF01             | 104             | 4               |
-| INF01      | 106       | 6        | INF01             | 104             | 4               |
-| INF01      | 105       | 5        | INF01             | 104             | 4               |
-| INF01      | 104       | 4        | INF01             | 102             | 2               |
-| INF01      | 103       | 3        | INF01             | 102             | 2               |
-| MAT01      | 103       | 3        | MAT01             | 101             | 1               |
+ disciplina
+| cod_depto  | num_disc  | nome_disc               | creditos_disc |
+|------------|-----------|-------------------------|---------------|
+| MAT01      | 101       | Cálculo Diferencial     | 4             |
+| MAT01      | 102       | Álgebra Linear          | 4             |
+| MAT01      | 103       | Geometria Analítica     | 4             |
+| INF01      | 101       | Programação FORTRAN     | 4             |
+| INF01      | 102       | Algoritmos e Programação| 6             |
+| INF01      | 103       | Estrutura de Dados      | 4             |
+| INF01      | 104       | Programação Lógica      | 4             |
+| INF01      | 105       | Teoria da Computação    | 4             |
+| INF01      | 106       | Banco de Dados          | 4             |
+| INF01      | 107       | Linguagens Formais      | 2             |
+| INF01      | 108       | Compiladores            | 4             |
+| INF01      | 109       | Classificação e Pesquisa| 6             |
 
- | ano_sem | disciplina | cod_depto | num_disc | sigla_ofer | capacidade_ofer |
-|---------|------------|-----------|----------|------------|-----------------|
-| 20211   | MAT01      | 101       | 1        | A          | 40              |
-| 20211   | MAT01      | 101       | 1        | B          | 40              |
-| 20211   | MAT01      | 101       | 1        | C          | 40              |
-| 20211   | INF01      | 101       | 1        | A          | 40              |
-| 20211   | INF01      | 101       | 1        | B          | 40              |
-| 20211   | INF01      | 102       | 2        | A          | 20              |
-| 20211   | INF01      | 102       | 2        | B          | 20              |
-| 20211   | INF01      | 102       | 2        | C          | 20              |
-| 20211   | INF01      | 103       | 3        | U          | 60              |
-| 20211   | INF01      | 104       | 4        | U          | 40              |
-| 20211   | INF01      | 105       | 5        | U          | 40              |
-| 20211   | INF01      | 106       | 6        | A          | 30              |
-| 20211   | INF01      | 106       | 6        | B          | 30              |
-| 20021   | INF01      | 107       | 7        | U          | 70              |
-| 20021   | INF01      | 108       | 8        | U          | 40              |
-| 20021   | INF01      | 109       | 9        | U          | 40              |
-| 20022   | MAT01      | 102       | 2        | A          | 40              |
-| 20022   | MAT01      | 102       | 2        | B          | 40              |
-| 20022   | MAT01      | 102       | 2        | C          | 40              |
-| 20022   | INF01      | 101       | 1        | U          | 20              |
-| 20022   | INF01      | 102       | 2        | A          | 20              |
-| 20022   | INF01      | 102       | 2        | B          | 20              |
-| 20022   | INF01      | 102       | 2        | C          | 20              |
-| 20022   | INF01      | 103       | 3        | U          | 60              |
-| 20022   | INF01      | 104       | 4        | U          | 40              |
-| 20022   | INF01      | 105       | 5        | U          | 40              |
-| 20022   | INF01      | 106       | 6        | U          | 70              |
-| 20022   | INF01      | 107       | 7        | A          | 30              |
-| 20022   | INF01      | 107       | 7        | B          | 40              |
-| 20022   | INF01      | 109       | 9        | U          | 40              |
+
+ prereq
+| cod_epto   | num_disc  | num_disc | cod_depto_prereq  | num_disc_prereq |
+|------------|-----------|----------|-------------------|-----------------|
+| INF01      | 109       | 9        | INF01             | 107             | 
+| INF01      | 109       | 9        | INF01             | 108             | 
+| INF01      | 108       | 8        | INF01             | 106             | 
+| INF01      | 108       | 8        | INF01             | 105             | 
+| INF01      | 107       | 7        | INF01             | 104             | 
+| INF01      | 106       | 6        | INF01             | 104             | 
+| INF01      | 105       | 5        | INF01             | 104             | 
+| INF01      | 104       | 4        | INF01             | 102             | 
+| INF01      | 103       | 3        | INF01             | 102             | 
+| MAT01      | 103       | 3        | MAT01             | 101             | 
+
+**Figura 2.12: Conteúdo para o bancode dados acadêmico.**
+
+  oferta
+| ano_sem | cod_depto  | num_disc  | sigla_ofer | capacidade_ofer |
+|---------|------------|-----------|------------|-----------------|
+| 20211   | MAT01      | 101       | A          | 40              |
+| 20211   | MAT01      | 101       | B          | 40              |
+| 20211   | MAT01      | 101       | C          | 40              |
+| 20211   | INF01      | 101       | A          | 40              |
+| 20211   | INF01      | 101       | B          | 40              |
+| 20211   | INF01      | 102       | A          | 20              |
+| 20211   | INF01      | 102       | B          | 20              |
+| 20211   | INF01      | 102       | C          | 20              |
+| 20211   | INF01      | 103       | U          | 60              |
+| 20211   | INF01      | 104       | U          | 40              |
+| 20211   | INF01      | 105       | U          | 40              |
+| 20211   | INF01      | 106       | A          | 30              |
+| 20211   | INF01      | 106       | B          | 30              |
+| 20021   | INF01      | 107       | U          | 70              |
+| 20021   | INF01      | 108       | U          | 40              |
+| 20021   | INF01      | 109       | U          | 40              |
+| 20022   | MAT01      | 102       | A          | 40              |
+| 20022   | MAT01      | 102       | B          | 40              |
+| 20022   | MAT01      | 102       | C          | 40              |
+| 20022   | INF01      | 101       | U          | 20              |
+| 20022   | INF01      | 102       | A          | 20              |
+| 20022   | INF01      | 102       | B          | 20              |
+| 20022   | INF01      | 102       | C          | 20              |
+| 20022   | INF01      | 103       | U          | 60              |
+| 20022   | INF01      | 104       | U          | 40              |
+| 20022   | INF01      | 105       | U          | 40              |
+| 20022   | INF01      | 106       | U          | 70              |
+| 20022   | INF01      | 107       | A          | 30              |
+| 20022   | INF01      | 107       | B          | 40              |
+| 20022   | INF01      | 109       | U          | 40              |
 
 **Figura 2.13: Banco de dados acadêmico (tabela oferta)**
+
+
+ predio
+| cod_pred | nome_pred | 
+|-----------|------------|
+| 43421   | Informática -laboratórios  | 
+| 43422  | Informática - administração | 
+| 43423   | Informática - aulas   |
+
+
+ sala
+| cod_pred    | num_sala | descricao_sala | capacidade_sala |
+|-------------|----------|---------------------|----------|
+| 43421       | 101      | Laboratório Windows | 30       |
+| 43421       | 102      | Laboratório Redes   | 30       |
+| 43421       | 103      | Laboratório Linux   | 30       |
+| 43421       | 104      | Laboratório Windows | 30       |
+| 43421       | 105      | Laboratório Linux   | 30       |
+| 43421       | 106      | Laboratório Hardware | 30       |
+| 43421       | 107      | Laboratório Automação | 30      |
+| 43422       | 101      | Secretaria Geral    | <N>      |
+| 43422       | 102      | Secretaria Graduação | <N>     |
+| 43422       | 103      | Secretaria pós´graduação | <N> |
+| 43423       | 101      | Sala de aula comun | 30    |
+| 43423       | 102      | Sala de aula comu | 30   |
+| 43423       | 103      | Sala de aula comun | 30  | 
+| 43423       | 104      | Sala de aula multimídia | 30  |
+| 43423       | 105      | Auditório | 80   |
+| 43423       | 106      | Sala de aula laboratório | 30  |
+| 43423       | 107      | Sala de aula laboratório | 30 |
+
+
+**Figura 2.14: Banco de dados acadêmico.**
+
+ periodo
+| ano_sem | cod_depto | num_disc | sigla_ofer | dia_sem | hora_inicio | cod_pred | num-sala    | num_horas |
+| 20021  | MAT01      | 101       | A          | 2      | 8  | 43423  | 101 | 2 |
+| 20021  | MAT01      | 101       | A          | 4      | 8  | 43423  | 101 | 2 |
+| 20021  | MAT01      | 101       | B          | 2      | 10 | 43423  | 101 | 2 |
+| 20021  | MAT01      | 101       | B          | 4      | 10 | 43423  | 101 | 2 |
+| 20021  | MAT01      | 101       | C          | 2      | 8 | 43423  | 102 | 2 |
+| 20021  | MAT01      | 101       | C          | 4      | 8 | 43423  | 102 | 2 |
+| 20021  | INF01      | 101       | A          | 2      | 8 | 43421  | 102 | 2 | 
+| 20021  | INF01      | 101       | A          | 4      | 8 | 43421 | 102 | 2 |
+| 20021  | INF01      | 101       | B          | 2      | 10 | 43421 | 102 | 2 |
+| 20021  | INF01      | 101       | B          | 4      | 10 | 43421  | 102 | 2 |
+| 20021  | INF01      | 102       | A          | 2      | 8 | 43421  | 101 | 2 |
+| 20021  | INF01      | 102       | A          | 4      | 8 | 43421  | 103 | 2 |
+| 20021  | INF01      | 102       | A          | 6      | 8 | 43421  | 103 | 2 |
+
+**Figura 2.15: Banco de dados acadêmico.**
 
 
  departamento
@@ -617,3 +674,18 @@ Relacionamento
 **Figura 1.3: Esquema gráfico para o banco de dados.**
 
 
+ titulacao
+
+
+
+
+ professor
+
+
+**Figura 2.16: Banco de dados acadêmico.**
+
+
+prof_oferts
+
+
+**Figura 2.17: Banco de dados acadêmico.** - p.57
