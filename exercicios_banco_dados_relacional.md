@@ -599,22 +599,7 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 
 **Figura 2.14: Banco de dados acadêmico.**
 
- periodo
-| ano_sem | cod_depto | num_disc | sigla_ofer | dia_sem | hora_inicio | cod_pred | num-sala    | num_horas |
-| 20021  | MAT01      | 101       | A          | 2      | 8  | 43423  | 101 | 2 |
-| 20021  | MAT01      | 101       | A          | 4      | 8  | 43423  | 101 | 2 |
-| 20021  | MAT01      | 101       | B          | 2      | 10 | 43423  | 101 | 2 |
-| 20021  | MAT01      | 101       | B          | 4      | 10 | 43423  | 101 | 2 |
-| 20021  | MAT01      | 101       | C          | 2      | 8 | 43423  | 102 | 2 |
-| 20021  | MAT01      | 101       | C          | 4      | 8 | 43423  | 102 | 2 |
-| 20021  | INF01      | 101       | A          | 2      | 8 | 43421  | 102 | 2 | 
-| 20021  | INF01      | 101       | A          | 4      | 8 | 43421 | 102 | 2 |
-| 20021  | INF01      | 101       | B          | 2      | 10 | 43421 | 102 | 2 |
-| 20021  | INF01      | 101       | B          | 4      | 10 | 43421  | 102 | 2 |
-| 20021  | INF01      | 102       | A          | 2      | 8 | 43421  | 101 | 2 |
-| 20021  | INF01      | 102       | A          | 4      | 8 | 43421  | 103 | 2 |
-| 20021  | INF01      | 102       | A          | 6      | 8 | 43421  | 103 | 2 |
-
+ 
  periodo
 
 | ano_sem | cod_ dpto | num_disc | sigla_disc | dia_semana | hora_início | cod_pred | num_sala | num_horas |
