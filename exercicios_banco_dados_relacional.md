@@ -601,8 +601,7 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 
  
  periodo
-
-| ano_sem | cod_ dpto | num_disc | sigla_disc | dia_semana | hora_início | cod_pred | num_sala | num_horas |
+| ano_sem | cod_ dpto | num_disc | sigla_ofer | dia_sem | hora_início | cod_pred | num_sala | num_horas |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | 20021 | MAT01 | 101 | A | 2 | 8 | 43423 | 101 | 2 |  
 | 20021 | MAT01 | 101 | A | 4 | 8 | 43423 | 101 | 2 |  
