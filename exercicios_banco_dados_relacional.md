@@ -585,9 +585,9 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 | 43421       | 105      | Laboratório Linux   | 30       |
 | 43421       | 106      | Laboratório Hardware | 30       |
 | 43421       | 107      | Laboratório Automação | 30      |
-| 43422       | 101      | Secretaria Geral    | <N>      |
-| 43422       | 102      | Secretaria Graduação | <N>     |
-| 43422       | 103      | Secretaria pós´graduação | <N> |
+| 43422       | 101      | Secretaria Geral    | NLL      |
+| 43422       | 102      | Secretaria Graduação | NULL     |
+| 43422       | 103      | Secretaria pós´graduação | NULL |
 | 43423       | 101      | Sala de aula comun | 30    |
 | 43423       | 102      | Sala de aula comu | 30   |
 | 43423       | 103      | Sala de aula comun | 30  | 
@@ -623,7 +623,7 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
  departamento
 | codigo_depto    | nome_dpto     | nivel_dpto    | 
 |-----------------|---------------|---------------|
-| 1               | Informática   | Pós_graduação | 
+| 1               | Informática   | Pós-graduação | 
 | 2               | Administração | Graduação     | 
 | 3               | Medicina      | Graduação     |
 
