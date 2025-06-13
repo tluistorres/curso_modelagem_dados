@@ -585,7 +585,7 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 | 43421       | 105      | Laboratório Linux   | 30       |
 | 43421       | 106      | Laboratório Hardware | 30       |
 | 43421       | 107      | Laboratório Automação | 30      |
-| 43422       | 101      | Secretaria Geral    | NLL      |
+| 43422       | 101      | Secretaria Geral    | NULL      |
 | 43422       | 102      | Secretaria Graduação | NULL     |
 | 43422       | 103      | Secretaria pós´graduação | NULL |
 | 43423       | 101      | Sala de aula comun | 30    |
@@ -677,17 +677,69 @@ Relacionamento
 
 
  titulacao
-
-
+| cod_tit | nome_tit | 
+|-----------|------------|
+| 1   | Graduado  | 
+| 2   | Especialista | 
+| 3   | Mestre   |
+| 4   |  Doutor   |
 
 
  professor
-
+| cod_prof    | cod_depto | cod_tit | nome_prof |
+|-------------|----------|---------------------|----------|
+| 1       | INF01      | 4 | Souza       |
+| 2       | INF01     | 4   | Antunes       |
+| 3       | INF01      | 4   | Macedo       |
+| 4       | INF01      | NULL | Machado       |
+| 5       | INF01      | 3   | Tavares       |
+| 6       | INF01      | 3 | Pereira       |
+| 7       | MAT01      | 4 | Alvares      |
+| 8       | MAT01      | 4    | Silva      |
+| 9       | MAT01      | NULL | Souza     |
+| 10      | INF01      | NULL | Machado |
+| 11      | INF01      | 4 | Moreira    |
 
 **Figura 2.16: Banco de dados acadêmico.**
 
 
-prof_oferts
+ prof_oferta
+| ano_sem | cod_ dpto | num_disc | sigla_ofer | cod_prof |
+| --- | --- | --- | --- | --- |  
+| 20021 | MAT01 | 101 | A | 10 |
+| 20021 | MAT01 | 101 | A | 11 |   
+| 20021 | MAT01 | 101 | A | 2 |  
+| 20021 | MAT01 | 101 | B | 7 |   
+| 20021 | MAT01 | 101 | C | 8 |  
+| 20021 | INF01 | 101 | A | 4 |  
+| 20021 | INF01 | 101 | A | 5 |   
+| 20021 | INF01 | 101 | B | 1 |   
+| 20021 | INF01 | 102 | A | 2 |   
+| 20021 | INF01 | 102 | B | 3 |   
+| 20021 | INF01 | 102 | C | 6 |  
+| 20021 | INF01 | 102 | C | 5 |   
+| 20021 | INF01 | 103 | U | 7 |  
+| 20021 | MAT01 | 104 | U | 4 |
+| 20021 | MAT01 | 105 | U | 2 |   
+| 20021 | MAT01 | 106 | A | 3 |  
+| 20021 | MAT01 | 106 | B | 6 |   
+| 20021 | MAT01 | 107 | U | 5 |  
+| 20021 | INF01 | 108 | U | 4 |  
+| 20021 | INF01 | 109 | U | 5 |   
+| 20021 | INF01 | 102 | A | 3 |   
+| 20021 | INF01 | 102 | B | 6 |   
+| 20021 | INF01 | 102 | C | 5 |   
+| 20021 | INF01 | 101 | U | 2 |  
+| 20021 | INF01 | 102 | A | 6 |   
+| 20021 | INF01 | 102 | B | 1 |  
+| 20021 | INF01 | 102 | C | 2 | 
+| 20021 | INF01 | 103 | U | 3 |   
+| 20021 | INF01 | 104 | U | 2 |    
+| 20021 | INF01 | 105 | U | 1 |   
+| 20021 | INF01 | 106 | U | 6 |   
+| 20021 | INF01 | 107 | A | 3 |  
+| 20021 | INF01 | 107 | B | 4 |   
+| 20021 | INF01 | 109 | U | 3 |  
 
 
 **Figura 2.17: Banco de dados acadêmico.** - p.57
