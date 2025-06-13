@@ -601,7 +601,7 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 
  
  periodo
-| ano_sem | cod_ dpto | num_disc | sigla_ofer | dia_sem | hora_início | cod_pred | num_sala | num_horas |
+| ano_sem | cod_ depto | num_disc | sigla_ofer | dia_sem | hora_início | cod_pred | num_sala | num_horas |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | 20021 | MAT01 | 101 | A | 2 | 8 | 43423 | 101 | 2 |  
 | 20021 | MAT01 | 101 | A | 4 | 8 | 43423 | 101 | 2 |  
@@ -621,14 +621,14 @@ WHERE funcao <> 'C2' OR funcao IS NULL;
 
 
  departamento
-| codigo_depto    | nome_dpto     | nivel_dpto    | 
+| codigo_depto    | nome_depto     | nivel_depto    | 
 |-----------------|---------------|---------------|
 | 1               | Informática   | Pós-graduação | 
 | 2               | Administração | Graduação     | 
 | 3               | Medicina      | Graduação     |
 
  professor
-| codigo_prof | nome_prof     | titulacao_prof | cod_dpto |
+| codigo_prof | nome_prof     | titulacao_prof | cod_depto |
 |-------------|---------------|----------------|----------|
 | 1           | Antônio Souza | Doutor          | 1       |
 | 2           | Pedro Silva   | Mestre          | 2       |
@@ -704,7 +704,7 @@ Relacionamento
 
 
  prof_oferta
-| ano_sem | cod_ dpto | num_disc | sigla_ofer | cod_prof |
+| ano_sem | cod_ depto | num_disc | sigla_ofer | cod_prof |
 | --- | --- | --- | --- | --- |  
 | 20021 | MAT01 | 101 | A | 10 |
 | 20021 | MAT01 | 101 | A | 11 |   
@@ -798,7 +798,7 @@ SELECT DISTINCT d.cod_depto, d.nome_depto
 
 FROM depto d
 
-JOIN periodo p ON d.cod_depto = p.cod_dpto
+JOIN periodo p ON d.cod_depto = p.cod_depto
 
 JOIN predio pr ON p.cod_pred = pr.cod_pred
 
@@ -834,3 +834,43 @@ pr.nome_pred = 'Informática - laboratórios' ∧ p.ano_sem = 20021 ∧ p.dia_se
 ) ∧ t = <d.cod_depto, d.nome_depto>}
 
 Ambos os códigos buscam os departamentos que atendem às condições especificadas e retornam os códigos e nomes dos departamentos.
+
+ **Saída:**
+
+ SELECT DISTINCT d.cod_depto, d.nome_depto
+
+FROM depto d
+
+JOIN periodo p ON d.cod_depto = p.cod_depto
+
+JOIN predio pr ON p.cod_pred = pr.cod_pred
+
+WHERE pr.nome_pred = 'Informática - laboratórios'
+
+  AND p.ano_sem = 20021
+
+  AND p.dia_sem = 2
+
+  AND p.num_sala = 101;
+
+    -  Podemos executar a consulta e verificar os resultados. De acordo com a tabela periodo, há uma linha que atende às condições:
+
+       - ano_sem = 20021
+  
+       - dia_sem = 2
+  
+       - num_sala = 101
+  
+       - cod_pred = 43421 (que corresponde ao prédio 'Informática - laboratórios')
+
+    -  A linha correspondente na tabela periodo é:
+
+| ano_sem | cod_depto | num_disc | sigla_ofer | dia_sem | hora_início | cod_pred | num_sala | num_horas |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 20021 | INF01 | 102 | A | 2 | 8 | 43421 | 101 | 2 |
+
+**Portanto, o resultado da consulta seria:**
+
+| cod_depto | nome_depto |
+| --- | --- |
+| INF01 | Informática |
