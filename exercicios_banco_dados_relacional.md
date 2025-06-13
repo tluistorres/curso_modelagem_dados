@@ -749,15 +749,25 @@ Relacionamento
 (De acordo com o livro Banco de Dados Relacional)
 
 π depto.cod_depto, depto.nome_depto 
+
 ( σ  depto.cod_depto = periodo.cod_depto
+
  AND periodo.cod_pred = predio.cod_pred
+
  AND periodo.ano_sem = 20021
+
  AND periodo.dia_sem =2
+
  AND periodo.num_sala = 101
+
  AND periodo.nome_pred = 
+
           ' Informática - laboratórios '
+
     ( depto x
+
       periodo x
+
       predio   
     )  
 )
@@ -765,39 +775,62 @@ Relacionamento
 (De acordo com o Chat da Meta)
 
 π depto.cod_depto, depto.nome_depto (
+
 σ depto.cod_depto = periodo.cod_depto 
+
 AND periodo.cod_pred = predio.cod_pred 
+
 AND predio.nome_pred = 'Informática - laboratórios' 
+
 AND periodo.ano_sem = 20021 AND periodo.dia_sem = 2 
+
 AND periodo.num_sala = 101 (
+
 depto x periodo x predio
+
 )
+
 )
 
 **SQL:**
 
 SELECT DISTINCT d.cod_depto, d.nome_depto
+
 FROM depto d
+
 JOIN periodo p ON d.cod_depto = p.cod_dpto
+
 JOIN predio pr ON p.cod_pred = pr.cod_pred
+
 WHERE pr.nome_pred = 'Informática - laboratórios'
+
   AND p.ano_sem = 20021
+
   AND p.dia_sem = 2
+
   AND p.num_sala = 101;
 
 
 **Cálculo Relacional:**
 
 {t | ∃d ∈ Depto ∃p ∈ Periodo ∃pr ∈ Predio (
+
 d.cod_depto = p.cod_dpto ∧ p.cod_pred = pr.cod_pred ∧
+
 pr.nome_pred = 'Informática - laboratórios' ∧
+
 p.ano_sem = 20021 ∧ p.dia_sem = 2 ∧ p.num_sala = 101
+
 ) ∧ t.cod_depto = d.cod_depto ∧ t.nome_depto = d.nome_depto}
 
 Ou, de forma mais compacta:
+
 {t | ∃d ∈ Depto ∃p ∈ Periodo ∃pr ∈ Predio (
+
 d.cod_depto = p.cod_dpto ∧ p.cod_pred = pr.cod_pred ∧
+
 pr.nome_pred = 'Informática - laboratórios' ∧ p.ano_sem = 20021 ∧ p.dia_sem = 2 ∧ p.num_sala = 101
+
 ) ∧ t = <d.cod_depto, d.nome_depto>}
 
 Ambos os códigos buscam os departamentos que atendem às condições especificadas e retornam os códigos e nomes dos departamentos.
