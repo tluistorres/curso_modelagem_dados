@@ -999,7 +999,7 @@ Essa consulta usa uma expressão para calcular o peso em libras multiplicando o 
 
 **Cálculo Relacional:**
 
-{t | ∃ p (p ∈ peca ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca ∧ t.peso_libras = p.peso_peca * 2.20462)
+{t | ∃ p (p ∈ peca ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca ∧ t.peso_libras = p.peso_peca * 2.20462))
 
 **Exemplo 3.8: Obter os códigos das peças cuja cidade é 'Porto Alegre' e que  constam embarques.**
 
@@ -1234,4 +1234,213 @@ Nesse caso, apenas o departamento de Informática (INF01) atende às condições
 
 {t | ∃ d, p (d ∈ disciplina ∧ p ∈ professor ∧ d.creditos_disc = 6 ∧ p.cod_tit = 4 ∧ d.cod_depto = p.cod_depto ∧ t.cod_depto = d.cod_depto)}
 
-**Exemplo 3.17: 
+-------------------------------------------------------------------------------------------------------------------
+  empregado
+| codigo_empregado | nome    | cod_depto | funcao | CPF         |
+|------------------|---------|-----------|--------|-------------|
+| E1               | Souza   | D1        | NULL   | 13212133120 |
+| E2               | Santos  | D2        | C5     | 89122111111 |
+| E3               | Silva   | D2        | C5     | 34151177545 |
+| E5               | Soares  | D1        | C2     | 63169275488 |
+
+**Exemplo 3.17: Obter os dados dos empregados cuja função é 'C5'.**
+
+SELECT codigo_empregado
+FROM empregado
+WHERE funcao = 'C5';
+
+
+Essa consulta busca os códigos dos empregados que têm a função 'C5'.
+
+Saída:
+
+| codigo_empregado |
+|------------------|
+| E2               |
+| E3               |
+
+Essa saída mostra os códigos dos empregados que atendem à condição.
+
+**Álgebra Relacional:**
+
+π codigo_empregado (σ funcao = 'C5' (empregado))
+
+**Cálculo Relacional:**
+
+{t | ∃ e (e ∈ empregado ∧ e.funcao = 'C5' ∧ t.codigo_empregado = e.codigo_empregado)}
+
+Se você quiser obter todas as informações dos empregados com função 'C5', a consulta SQL seria:
+
+
+SELECT *
+FROM empregado
+WHERE funcao = 'C5';
+
+
+E a saída seria:
+
+| codigo_empregado | nome  | cod_depto | funcao | CPF          |
+|------------------|-------|-----------|--------|--------------|
+| E2               | Santos| D2        | C5     | 89122111111  |
+| E3               | Silva | D2        | C5     | 34151177545  |
+
+**Exemplo 3.18: Obter os dados dos empregados cuja função, quando informada (não vazia), é diferente de 'C2'.**
+
+SELECT *
+FROM empregado
+WHERE funcao IS NOT NULL AND funcao <> 'C2';
+
+
+Essa consulta busca os empregados que têm uma função informada (não vazia) e que é diferente de 'C2'.
+
+Saída:
+
+| codigo_empregado | nome  | cod_depto | funcao | CPF          |
+|------------------|-------|-----------|--------|--------------|
+| E2               | Santos| D2        | C5     | 89122111111  |
+| E3               | Silva | D2        | C5     | 34151177545  |
+
+**Álgebra Relacional:**
+
+π * (σ funcao ≠ 'C2' ∧ funcao ≠ NULL (empregado))
+
+Ou, de forma mais precisa:
+
+π * (σ funcao ≠ 'C2' (σ funcao ≠ NULL (empregado)))
+
+**Cálculo Relacional:**
+
+{t | ∃ e (e ∈ empregado ∧ e.funcao ≠ 'C2' ∧ e.funcao ≠ NULL ∧ t = e)}
+
+Ou, de forma mais detalhada:
+
+{t | ∃ e (e ∈ empregado ∧ e.funcao ≠ 'C2' ∧ ∃ x (x = e.funcao ∧ x ≠ NULL) ∧ t = e)}
+
+Mas a forma mais comum e simples seria:
+
+{t | t ∈ empregado ∧ t.funcao ≠ 'C2' ∧ t.funcao ≠ NULL}
+
+**Para considerar a condição de que a função não pode ser nula, a expressão mais precisa seria:**
+
+σ funcao <> 'C2' ∧ funcao ≠ NULL (empregado)
+
+Ou, de forma mais comum:
+
+σ funcao <> 'C2' ∧ funcao IS NOT NULL não é exatamente igual em álgebra relacional, mas podemos considerar:
+
+σ funcao <> 'C2' (σ funcao ≠ NULL (empregado))
+
+**Exemplo 3.19: Obter os dados dos empregados que tem função informada.**
+
+SELECT *
+FROM empregado
+WHERE funcao IS NOT NULL;
+
+
+Essa consulta busca os empregados que têm uma função informada.
+
+Saída:
+
+| codigo_empregado | nome  | cod_depto | funcao | CPF          |
+|------------------|-------|-----------|--------|--------------|
+| E2               | Santos| D2        | C5     | 89122111111  |
+| E3               | Silva | D2        | C5     | 34151177545  |
+| E5               | Soares| D1        | C2     | 63169275488  |
+
+Essa saída mostra os empregados que têm uma função informada.
+
+**Álgebra Relacional:**
+
+σ funcao ≠ NULL (empregado)
+
+Ou, de forma mais comum:
+
+σ funcao IS NOT NULL (empregado) não é exatamente igual em álgebra relacional, mas podemos considerar a primeira opção.
+
+*Cálculo Relacional:*
+
+{t | t ∈ empregado ∧ t.funcao ≠ NULL}
+
+**Álgebra Relacional utilizando a U.**
+
+σ funcao = 'C5' (empregado) U σ funcao <> 'C5' (empregado)
+
+**Exercício 3.20: Obter os dados dos empregados cuja função é diferente de 'C2', inclusive daqueles que não tem função informada (campo funcao é NULL).**
+
+SQL:
+
+
+SELECT *
+FROM empregado
+WHERE funcao <> 'C2' OR funcao IS NULL;
+
+
+**Álgebra Relacional:**
+
+σ funcao <> 'C2' (empregado) ∪ σ funcao = NULL (empregado)
+
+Ou, de forma mais simples:
+
+σ funcao <> 'C2' OR funcao = NULL (empregado) não é exatamente assim em álgebra relacional, mas podemos considerar:
+
+empregado - σ funcao = 'C2' (empregado)
+
+Essa expressão retorna todos os empregados que não têm função 'C2', o que inclui os empregados que não têm função informada (NULL) e os que têm função diferente de 'C2'.
+
+**Cálculo Relacional:**
+
+{t | t ∈ empregado ∧ (t.funcao <> 'C2' ∨ t.funcao = NULL)}
+
+Saída:
+
+| codigo_empregado | nome  | cod_depto | funcao | CPF          |
+|------------------|-------|-----------|--------|--------------|
+| E1               | Souza | D1        | NULL   | 13212133120  |
+| E2               | Santos| D2        | C5     | 89122111111  |
+| E3               | Silva | D2        | C5     | 34151177545  |
+
+**Tabela empregado:**
+
+ empregado                               
+|   codigo_empregado  |       nome       |    cod_depto    | cod_emp_chefe  |  
+|---------------------|------------------|-----------------|----------------|
+|         10          |     Pereira      |      100        |      NULL      |
+|         21          |     Tavares      |      101        |       10       |
+|         30          |     Satos        |      100        |       10       |
+|         55          |     Almeida      |      102        |       21       |
+
+**Exemplo 6.15: Obter um os códigos contendo uma linha para cada empregado que possui um chefe. Esta linha deve conter o nome do empregado, seguido do nome de seu chefe.**
+
+SQL:
+
+
+SELECT e.nome AS nome_empregado, c.nome AS nome_chefe
+FROM empregado e
+JOIN empregado c ON e.cod_emp_chefe = c.codigo_empregado;
+
+
+Saída:
+
+| nome_empregado | nome_chefe |
+|----------------|------------|
+| Tavares        | Pereira    |
+| Satos          | Pereira    |
+| Almeida        | Tavares    |
+
+**Álgebra Relacional:**
+
+π nome, nome_chefe (empregado ⋈ empregado.cod_emp_chefe = empregado.codigo_empregado ρ chefe (empregado))
+
+Ou, de forma mais simples:
+
+π e.nome, c.nome (empregado e ⋈ e.cod_emp_chefe = c.codigo_empregado empregado c)
+
+**Cálculo Relacional:**
+
+{t | ∃ e ∃ c (e ∈ empregado ∧ c ∈ empregado ∧ e.cod_emp_chefe = c.codigo_empregado ∧ t.nome_empregado = e.nome ∧ t.nome_chefe = c.nome)}
+
+Ou, de forma mais detalhada:
+
+{t | ∃ e ∃ c (e ∈ empregado ∧ c ∈ empregado ∧ e.cod_emp_chefe = c.codigo_empregado ∧ t = <e.nome, c.nome>)}
+
+**Exercícios adicionais.**
