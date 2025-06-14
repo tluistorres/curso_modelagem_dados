@@ -160,10 +160,10 @@ Exercício 2.5: Considere o banco de dados de embarques com o conteúdo mostrado
 
       Com relação à chave primária da tabela embarque responda: É possível que existam dois embarques da mesma peça pelo mesmo fornecedor em uma determinada data? Justifique a resposta.
 
-Exercício 2.6: Construa um esquema diagramático para o banco de dados acadêmico, usando a notação apresentada neste capítulo.
+**Exercício 2.6: Construa um esquema diagramático para o banco de dados acadêmico, usando a notação apresentada neste capítulo.**
 
 
-Exercício 2.7: Defina chaves alternativas para todas tabelas que compõe a variante do modelo acadêmico com chaves artificiais **(Figura 2.19)**.
+**Exercício 2.7: Defina chaves alternativas para todas tabelas que compõe a variante do modelo acadêmico com chaves artificiais **(Figura 2.19)**.
 
 
 Exercício 2.8: Deseja-se construir um banco de dados para armazenar informaões genealógicas. Neste banco de dados, pessoas armazenam informações sobre seus ancestrais e sobre descendentes destes.
@@ -874,3 +874,364 @@ WHERE pr.nome_pred = 'Informática - laboratórios'
 | cod_depto | nome_depto |
 | --- | --- |
 | INF01 | Informática |
+
+**Exemplo 3.1: Obter as peças que são da cidade 'Rio' e cujo peso excede 15.**
+
+SELECT *
+FROM peca
+WHERE cidade_peca = 'Rio' AND peso_peca > 15;
+
+O resultado será:
+
+| codigo_peca | nome_peca | peso_peca | cor_peca | cidade_peca |
+| --- | --- | --- | --- | --- |
+| P3 | Mancal | 25 | Vermelho | Rio |
+
+Essa consulta usa o operador AND para combinar as condições de seleção.
+
+**Álgebra Relacional:**
+
+σ cidade_peca = 'Rio' ∧ peso_peca > 15 (peca)
+
+**Cálculo Relacional:**
+
+{t | t ∈ peca ∧ t.cidade_peca = 'Rio' ∧ t.peso_peca > 15}
+
+**Exemplo 3.4 p.78: Obter os códigos e os nomes de todas peças(Figura 2.11)**
+
+SELECT codigo_peca, nome_peca
+FROM peca;
+
+O resultado será:
+
+| codigo_peca | nome_peca |
+| --- | --- |
+| P1 | Parafuso |
+| P2 | Arruela |
+| P3 | Mancal |
+| P4 | Eixo |
+| P5 | Motor |
+
+**Álgebra Relacional:**
+
+π codigo_peca, nome_peca (peca)
+
+**Cálculo Relacional:**
+
+{t | ∃ p (p ∈ peca ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca)}
+
+Ou de forma mais simplificada:
+
+{<codigo_peca, nome_peca> | peca(codigo_peca, nome_peca)}
+
+**Exemplo 3.5 p.79: Obter as cidades em que há fornecedores (Figura 2.11)**
+
+SELECT DISTINCT cidade_fornec
+FROM fornecedor;
+
+O resultado seria:
+
+| cidade_fornec |
+| --- |
+| Porto Alegre |
+| Curitiba |
+| Rio |
+| NULL |
+
+Essa consulta usa o operador DISTINCT para eliminar as cidades duplicadas.
+
+**Álgebra Relacional:**
+
+π cidade_fornec (fornecedor)
+
+**Cálculo Relacional:**
+
+{t | ∃ f (f ∈ fornecedor ∧ t.cidade_fornec = f.cidade_fornec)}
+
+Ou de forma mais simplificada:
+
+{<cidade_fornec> | ∃ cod_fornec, nome_fornec, status_fornec (fornecedor(cod_fornec, nome_fornec, status_fornec, cidade_fornec))}
+
+**Exemplo 3.6: Obter as cidades em que há fornecedores com status maior ou igaul a 10.**
+
+SELECT DISTINCT cidade_fornec
+FROM fornecedor
+WHERE status_fornec >= 10;
+
+O resultado será:
+
+| cidade_fornec |
+| --- |
+| Porto Alegre |
+| Curitiba |
+| Rio |
+
+Essa consulta usa o operador >= para selecionar os fornecedores com status maior ou igual a 10 e o operador DISTINCT para eliminar as cidades duplicadas.
+
+**Álgebra Relacional:**
+
+π cidade_fornec (σ status_fornec >= 10 (fornecedor))
+
+**Cálculo Relacional:**
+
+{t | ∃ f (f ∈ fornecedor ∧ t.cidade_fornec = f.cidade_fornec ∧ f.status_fornec >= 10)}
+
+**Exemplo 3.7: Obter uma tabela com três colunas, contendo o código, o nome, e o peso em libras da cada peça. A coluna peso_peca da tabela peca contém o peso em quilogramas multiplicado por 2,20462.**
+
+SELECT codigo_peca, nome_peca, peso_peca * 2.20462 AS peso_libras
+FROM peca;
+
+O resultado será:
+
+| codigo_peca | nome_peca | peso_libras |
+| --- | --- | --- |
+| P1 | Parafuso | 11.0231 |
+| P2 | Arruela | 11.0231 |
+| P3 | Mancal | 55.1155 |
+| P4 | Eixo | 33.0693 |
+| P5 | Motor | 143.3003 |
+
+Essa consulta usa uma expressão para calcular o peso em libras multiplicando o peso em quilogramas por 2,20462.
+
+**Álgebra Relacional:**
+
+π codigo_peca, nome_peca, peso_peca * 2.20462 (peca)
+
+**Cálculo Relacional:**
+
+{t | ∃ p (p ∈ peca ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca ∧ t.peso_libras = p.peso_peca * 2.20462)
+
+**Exemplo 3.8: Obter os códigos das peças cuja cidade é 'Porto Alegre' e que  constam embarques.**
+
+SELECT DISTINCT p.codigo_peca
+FROM peca p
+JOIN embarque e ON p.codigo_peca = e.cod_peca
+WHERE p.cidade_peca = 'Porto Alegre';
+
+
+O resultado seria:
+
+| codigo_peca |
+| --- |
+| P1 |
+| P2 |
+
+Essa consulta usa uma junção (JOIN) para combinar as tabelas peca e embarque com base no código da peça, e então aplica a condição de seleção para a cidade 'Porto Alegre'.
+
+**Álgebra Relacional:**
+
+π codigo_peca (σ cidade_peca = 'Porto Alegre' (peca ⨝ codigo_peca = cod_peca embarque))
+
+Ou : π codigo_peca (σ cidade_peca = 'Porto Alegre' (peca)) ∩ π cod_peca (embarque) ou (π cod_peca (embarque)) ∩ (π codigo_peca (σ cidade_peca = 'Porto Alegre' (peca)))
+
+
+**Cálculo Relacional:**
+
+{t | ∃ p, e (p ∈ peca ∧ e ∈ embarque ∧ p.codigo_peca = e.cod_peca ∧ p.cidade_peca = 'Porto Alegre' ∧ t.codigo_peca = p.codigo_peca)}
+
+**Exercícios 3.7: Escrever uma consulta que obtenha os códigos das peças para as quais ao menos uma das seguintes afirmativas é válida:**
+
+    - A peça tem ao menos um embarque em '2000-01-12'.
+    - O peso da peça é maior ou igual a cinco.
+
+SELECT DISTINCT p.codigo_peca
+FROM peca p
+LEFT JOIN embarque e ON p.codigo_peca = e.cod_peca AND e.data_embarq = '2000-01-12'
+WHERE p.peso_peca >= 5 OR e.cod_peca IS NOT NULL;
+
+
+**Álgebra Relacional:**
+
+(π codigo_peca (σ peso_peca >= 5 (peca))) ∪ (π cod_peca (σ data_embarq = '2000-01-12' (embarque)))
+
+Essa consulta usa a operação de união (∪) para combinar os códigos das peças que têm peso maior ou igual a cinco com os códigos das peças que têm ao menos um embarque em '2000-01-12'.
+
+Note que usei o operador OR na consulta SQL para combinar as condições, e a operação de união (∪) na Álgebra Relacional para combinar as relações. Além disso, usei o operador DISTINCT para eliminar códigos de peças duplicados.
+
+**Cálculo Relacional**
+
+{t | ∃ p (p ∈ peca ∧ t.codigo_peca = p.codigo_peca ∧ (p.peso_peca >= 5 ∨ ∃ e (e ∈ embarque ∧ e.cod_peca = p.codigo_peca ∧ e.data_embarq = '2000-01-12')))}
+
+**Exemplo 3.13: Obter os códigos e nomes das peças que têm pelo menos um embarque feito pelo fornecedor de código 'F1'.**
+
+SELECT DISTINCT p.codigo_peca, p.nome_peca
+FROM peca p
+JOIN embarque e ON p.codigo_peca = e.cod_peca
+WHERE e.cod_fornec = 'F1';
+
+A saída da consulta será:
+
+| codigo_peca | nome_peca |
+| --- | --- |
+| P1 | Parafuso |
+| P2 | Arruela |
+
+**Álgebra Relacional:**
+
+π codigo_peca, nome_peca (peca ⨝ codigo_peca = cod_peca (σ cod_fornec = 'F1' (embarque)))
+
+**Cálculo Relacional:**
+
+{t | ∃ p, e (p ∈ peca ∧ e ∈ embarque ∧ p.codigo_peca = e.cod_peca ∧ e.cod_fornec = 'F1' ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca)}
+
+**Exemplom3.14: Obter o código e o nome de cada peça que tem ao menos um embarque de um fornecedor de nome 'Silva'.**
+
+SELECT DISTINCT p.codigo_peca, p.nome_peca
+FROM peca p
+JOIN embarque e ON p.codigo_peca = e.cod_peca
+JOIN fornecedor f ON e.cod_fornec = f.codigo_fornec
+WHERE f.nome_fornec = 'Silva';
+
+A saída da consulta será:
+
+| codigo_peca | nome_peca |
+| --- | --- |
+| P1 | Parafuso |
+| P3 | Mancal |
+
+**Álgebra Relacional:**
+
+π codigo_peca, nome_peca ((peca ⨝ codigo_peca = cod_peca embarque) ⨝ cod_fornec = codigo_fornec (σ nome_fornec = 'Silva' (fornecedor)))
+
+**Cálculo Relacional:**
+
+{t | ∃ p, e, f (p ∈ peca ∧ e ∈ embarque ∧ f ∈ fornecedor ∧ p.codigo_peca = e.cod_peca ∧ e.cod_fornec = f.codigo_fornec ∧ f.nome_fornec = 'Silva' ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca)}
+
+**Exercício 3.11: Obter os códigos com os nomes  das peças para as quais há pelo menos um embarque de quantidade maior que 300 unidades.**
+
+SELECT DISTINCT p.codigo_peca, p.nome_peca
+FROM peca p
+JOIN embarque e ON p.codigo_peca = e.cod_peca
+WHERE e.quantidade > 300;
+
+A saída da consulta será:
+
+| codigo_peca | nome_peca |
+| --- | --- |
+| P1 | Parafuso |
+| P3 | Mancal |
+| P5 | Motor |
+
+**Álgebra Relacional:**
+
+π codigo_peca, nome_peca (peca ⨝ codigo_peca = cod_peca (σ quantidade > 300 (embarque)))
+
+**Cálculo Relacional:**
+
+{t | ∃ p, e (p ∈ peca ∧ e ∈ embarque ∧ p.codigo_peca = e.cod_peca ∧ e.quantidade > 300 ∧ t.codigo_peca = p.codigo_peca ∧ t.nome_peca = p.nome_peca)}
+
+**Exercício 3.10: Obter os códigos dos departamentos que possuem ao menos uma disciplina com seis créditos e ao menos um professor cuja titulação tem código igual a quatro.**
+
+
+ depto
+| cod_depto | nome_depto | 
+|-----------|------------|
+| INF01   | Informática  | 
+| MED01   | Medicina Interna | 
+| MAT01   | Matemática   |
+| FIS01   |   Física   |
+
+
+ disciplina
+| cod_depto  | num_disc  | nome_disc               | creditos_disc |
+|------------|-----------|-------------------------|---------------|
+| MAT01      | 101       | Cálculo Diferencial     | 4             |
+| MAT01      | 102       | Álgebra Linear          | 4             |
+| MAT01      | 103       | Geometria Analítica     | 4             |
+| INF01      | 101       | Programação FORTRAN     | 4             |
+| INF01      | 102       | Algoritmos e Programação| 6             |
+| INF01      | 103       | Estrutura de Dados      | 4             |
+| INF01      | 104       | Programação Lógica      | 4             |
+| INF01      | 105       | Teoria da Computação    | 4             |
+| INF01      | 106       | Banco de Dados          | 4             |
+| INF01      | 107       | Linguagens Formais      | 2             |
+| INF01      | 108       | Compiladores            | 4             |
+| INF01      | 109       | Classificação e Pesquisa| 6             |
+
+
+ prereq
+| cod_epto   | num_disc  | num_disc | cod_depto_prereq  | num_disc_prereq |
+|------------|-----------|----------|-------------------|-----------------|
+| INF01      | 109       | 9        | INF01             | 107             | 
+| INF01      | 109       | 9        | INF01             | 108             | 
+| INF01      | 108       | 8        | INF01             | 106             | 
+| INF01      | 108       | 8        | INF01             | 105             | 
+| INF01      | 107       | 7        | INF01             | 104             | 
+| INF01      | 106       | 6        | INF01             | 104             | 
+| INF01      | 105       | 5        | INF01             | 104             | 
+| INF01      | 104       | 4        | INF01             | 102             | 
+| INF01      | 103       | 3        | INF01             | 102             | 
+| MAT01      | 103       | 3        | MAT01             | 101             | 
+
+ departamento
+| codigo_depto    | nome_depto     | nivel_depto    | 
+|-----------------|---------------|---------------|
+| 1               | Informática   | Pós-graduação | 
+| 2               | Administração | Graduação     | 
+| 3               | Medicina      | Graduação     |
+
+ professor
+| codigo_prof | nome_prof     | titulacao_prof | cod_depto |
+|-------------|---------------|----------------|----------|
+| 1           | Antônio Souza | Doutor          | 1       |
+| 2           | Pedro Silva   | Mestre          | 2       |
+| 3           | Felipe Souza  | Doutor          | 3       |
+| 4           | Manuel Silva  | Doutor          | 1       |
+
+titulacao
+| cod_tit | nome_tit | 
+|-----------|------------|
+| 1   | Graduado  | 
+| 2   | Especialista | 
+| 3   | Mestre   |
+| 4   |  Doutor   |
+
+
+ professor
+| cod_prof    | cod_depto | cod_tit | nome_prof |
+|-------------|----------|---------------------|----------|
+| 1       | INF01      | 4 | Souza       |
+| 2       | INF01     | 4   | Antunes       |
+| 3       | INF01      | 4   | Macedo       |
+| 4       | INF01      | NULL | Machado       |
+| 5       | INF01      | 3   | Tavares       |
+| 6       | INF01      | 3 | Pereira       |
+| 7       | MAT01      | 4 | Alvares      |
+| 8       | MAT01      | 4    | Silva      |
+| 9       | MAT01      | NULL | Souza     |
+| 10      | INF01      | NULL | Machado |
+| 11      | INF01      | 4 | Moreira    |
+
+SELECT DISTINCT d.cod_depto
+FROM depto d
+WHERE d.cod_depto IN (
+  SELECT cod_depto
+  FROM disciplina
+  WHERE creditos_disc = 6
+)
+AND d.cod_depto IN (
+  SELECT p.cod_depto
+  FROM professor p
+  WHERE p.cod_tit = 4
+);
+
+
+Essa consulta busca os códigos dos departamentos que atendem às condições.
+
+Saída:
+
+| cod_depto |
+|-----------|
+| INF01     |
+
+Nesse caso, apenas o departamento de Informática (INF01) atende às condições, pois tem disciplinas com 6 créditos e professores com titulação de Doutor.
+
+**Álgebra Relacional:**
+
+π cod_depto (σ creditos_disc = 6 (disciplina)) ∩ π cod_depto (σ cod_tit = 4 (professor))
+
+**Cálculo Relacional:
+
+{t | ∃ d, p (d ∈ disciplina ∧ p ∈ professor ∧ d.creditos_disc = 6 ∧ p.cod_tit = 4 ∧ d.cod_depto = p.cod_depto ∧ t.cod_depto = d.cod_depto)}
+
+**Exemplo 3.17: 
