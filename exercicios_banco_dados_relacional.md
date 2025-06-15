@@ -1444,3 +1444,86 @@ Ou, de forma mais detalhada:
 {t | ∃ e ∃ c (e ∈ empregado ∧ c ∈ empregado ∧ e.cod_emp_chefe = c.codigo_empregado ∧ t = <e.nome, c.nome>)}
 
 **Exercícios adicionais.**
+
+**Exercício 3.21: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os professores que são do departamento de código 'INF01' e que ministram ao menos uma oferta no ano-semestre 20021.**
+
+**Exercício 3.22: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os nomes dos professores que têm titulação denominada 'Doutor' e que são do departamento 'Informática'.**
+
+**Exercício 3.23: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os identificadores  e os nomes das disciplinas que tiveram pelo menos uma oferta no ano-semestre 20011.**
+
+**Exercício 3.24: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os nomes dos professores que ministram aulas em ao menos uma oferta de uma disciplina de um departamento diferente daquele ao qual o professor está vinculadoê**
+
+**Exercício 3.25: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional,  os nomes dos departamentos que, em 20021, tiveram ao menos uma oferta com aulas nas segundas-feiras (dia_sem=2), na sala 101 do prédio denominado 'Informática - laboratórios'**
+
+**Exercício 3.26: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os códigos e os nomes dos professores que não deram aula em nenhua oferta.**
+
+**Exercício 3.27: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para  os nomes dos professores que não deram aula em nenhua oferta.**
+
+**Exercício 3.29: Obter os códigos para cada disciplina que possui um pré-requisito, obtenha o nome a disciplina, seguido do nome da discilina que é pré-requisito.**
+
+**Exercício 3.30: Escreva uma consulta que para cada disciplina que possua ao menos um pré-requisito, o qual, a sua vez , também tenha um pré-requisito, obtenha o nome da disciplina seguido do nome da disciplina que é pré-requisito de seu pré-requisito.**
+
+ departamento                             
+|   codigo_depto      |       nome       |  
+|---------------------|------------------|
+|        100          |     Vendas       |      
+|        101          |   Financeiro     |        
+|        102          |    Produção      |        
+   
+
+
+ empregado                               
+|   codigo_empregado  |       nome       |    cod_depto    | cod_emp_chefe  |  
+|---------------------|------------------|-----------------|----------------|
+|         10          |     Pereira      |      100        |      NULL      |
+|         21          |     Tavares      |      101        |       10       |
+|         30          |     Satos        |      100        |       10       |
+|         55          |     Almeida      |      102        |       21       |
+
+
+
+**Exercício 3.33: Obtenha uma tabela com duas colunas, ambas contendo nomes de empregaddo, sendo que na primeira coluna deve aparecer um nome de um subordinado, em qualquer nível hierárquico, do empregado cujo nome consta na segunda coluna. Devem aparecer linhas com o nome da cada empregado seguido do nome de seu chefe, e assim recursicvamente até atingir o topo da hierarqia de chefia.**
+
+WITH RECURSIVE hierarquia AS (
+  SELECT codigo_empregado, nome, cod_emp_chefe, 0 AS nivel
+  FROM empregado
+  UNION ALL
+  SELECT h.codigo_empregado, h.nome, e.cod_emp_chefe, nivel + 1
+  FROM empregado e
+  JOIN hierarquia h ON e.codigo_empregado = h.cod_emp_chefe
+)
+SELECT h1.nome AS subordinado, h2.nome AS chefe
+FROM hierarquia h1
+JOIN hierarquia h2 ON h1.cod_emp_chefe = h2.codigo_empregado;
+
+
+Saída:
+
+| subordinado | chefe   |
+|-------------|---------|
+| Tavares     | Pereira |
+| Satos       | Pereira |
+| Almeida     | Tavares |
+
+Essa consulta retorna os nomes dos empregados que são subordinados de outros empregados, juntamente com os nomes de seus respectivos chefes.
+
+Observação:
+
+- A consulta utiliza uma CTE recursiva para percorrer a hierarquia de chefia.
+- A primeira parte da consulta seleciona os empregados que têm um chefe.
+- A segunda parte da consulta une a tabela de empregados com a CTE recursiva para encontrar os chefes dos empregados.
+- A consulta final une a CTE recursiva consigo mesma para encontrar os subordinados e seus respectivos chefes.
+
+Álgebra Relacional:
+
+A álgebra relacional não é capaz de expressar consultas recursivas diretamente. No entanto, podemos expressar a consulta de forma aproximada, utilizando junções e uniões:
+
+π subordinado, chefe (empregado ⋈ empregado.cod_emp_chefe = empregado.codigo_empregado ρ chefe (empregado))
+
+Mas essa expressão não captura a recursividade necessária para percorrer toda a hierarquia.
+
+Cálculo Relacional:
+
+O cálculo relacional também não é capaz de expressar consultas recursivas diretamente. No entanto, podemos expressar a consulta de forma aproximada, utilizando quantificadores e predicados:
+
+{t | ∃ e ∃ c (e ∈ empregado ∧ c ∈ empregado ∧ e.cod_emp_chefe = c.codigo_empregado ∧ t.subordinado = e.nome ∧ t.chefe = c.nome)}
