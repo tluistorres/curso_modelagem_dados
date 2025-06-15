@@ -1485,15 +1485,24 @@ Ou, de forma mais detalhada:
 **Exercício 3.33: Obtenha uma tabela com duas colunas, ambas contendo nomes de empregaddo, sendo que na primeira coluna deve aparecer um nome de um subordinado, em qualquer nível hierárquico, do empregado cujo nome consta na segunda coluna. Devem aparecer linhas com o nome da cada empregado seguido do nome de seu chefe, e assim recursicvamente até atingir o topo da hierarqia de chefia.**
 
 WITH RECURSIVE hierarquia AS (
+
   SELECT codigo_empregado, nome, cod_emp_chefe, 0 AS nivel
+
   FROM empregado
+
   UNION ALL
+
   SELECT h.codigo_empregado, h.nome, e.cod_emp_chefe, nivel + 1
+
   FROM empregado e
+
   JOIN hierarquia h ON e.codigo_empregado = h.cod_emp_chefe
 )
+
 SELECT h1.nome AS subordinado, h2.nome AS chefe
+
 FROM hierarquia h1
+
 JOIN hierarquia h2 ON h1.cod_emp_chefe = h2.codigo_empregado;
 
 
