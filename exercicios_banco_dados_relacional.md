@@ -1178,7 +1178,7 @@ A saída da consulta será:
 | 3           | Felipe Souza  | Doutor          | 3       |
 | 4           | Manuel Silva  | Doutor          | 1       |
 
-titulacao
+ titulacao
 | cod_tit | nome_tit | 
 |-----------|------------|
 | 1   | Graduado  | 
@@ -1443,23 +1443,1075 @@ Ou, de forma mais detalhada:
 
 {t | ∃ e ∃ c (e ∈ empregado ∧ c ∈ empregado ∧ e.cod_emp_chefe = c.codigo_empregado ∧ t = <e.nome, c.nome>)}
 
+
 **Exercícios adicionais.**
+
+ depto
+| cod_depto | nome_depto | 
+|-----------|------------|
+| INF01   | Informática  | 
+| MED01   | Medicina Interna | 
+| MAT01   | Matemática   |
+| FIS01   |   Física   |
+
+
+ disciplina
+| cod_depto  | num_disc  | nome_disc               | creditos_disc |
+|------------|-----------|-------------------------|---------------|
+| MAT01      | 101       | Cálculo Diferencial     | 4             |
+| MAT01      | 102       | Álgebra Linear          | 4             |
+| MAT01      | 103       | Geometria Analítica     | 4             |
+| INF01      | 101       | Programação FORTRAN     | 4             |
+| INF01      | 102       | Algoritmos e Programação| 6             |
+| INF01      | 103       | Estrutura de Dados      | 4             |
+| INF01      | 104       | Programação Lógica      | 4             |
+| INF01      | 105       | Teoria da Computação    | 4             |
+| INF01      | 106       | Banco de Dados          | 4             |
+| INF01      | 107       | Linguagens Formais      | 2             |
+| INF01      | 108       | Compiladores            | 4             |
+| INF01      | 109       | Classificação e Pesquisa| 6             |
+
+
+ prereq
+| cod_epto   | num_disc  | num_disc | cod_depto_prereq  | num_disc_prereq |
+|------------|-----------|----------|-------------------|-----------------|
+| INF01      | 109       | 9        | INF01             | 107             | 
+| INF01      | 109       | 9        | INF01             | 108             | 
+| INF01      | 108       | 8        | INF01             | 106             | 
+| INF01      | 108       | 8        | INF01             | 105             | 
+| INF01      | 107       | 7        | INF01             | 104             | 
+| INF01      | 106       | 6        | INF01             | 104             | 
+| INF01      | 105       | 5        | INF01             | 104             | 
+| INF01      | 104       | 4        | INF01             | 102             | 
+| INF01      | 103       | 3        | INF01             | 102             | 
+| MAT01      | 103       | 3        | MAT01             | 101             | 
+
+
+  oferta
+| ano_sem | cod_depto  | num_disc  | sigla_ofer | capacidade_ofer |
+|---------|------------|-----------|------------|-----------------|
+| 20211   | MAT01      | 101       | A          | 40              |
+| 20211   | MAT01      | 101       | B          | 40              |
+| 20211   | MAT01      | 101       | C          | 40              |
+| 20211   | INF01      | 101       | A          | 40              |
+| 20211   | INF01      | 101       | B          | 40              |
+| 20211   | INF01      | 102       | A          | 20              |
+| 20211   | INF01      | 102       | B          | 20              |
+| 20211   | INF01      | 102       | C          | 20              |
+| 20211   | INF01      | 103       | U          | 60              |
+| 20211   | INF01      | 104       | U          | 40              |
+| 20211   | INF01      | 105       | U          | 40              |
+| 20211   | INF01      | 106       | A          | 30              |
+| 20211   | INF01      | 106       | B          | 30              |
+| 20021   | INF01      | 107       | U          | 70              |
+| 20021   | INF01      | 108       | U          | 40              |
+| 20021   | INF01      | 109       | U          | 40              |
+| 20022   | MAT01      | 102       | A          | 40              |
+| 20022   | MAT01      | 102       | B          | 40              |
+| 20022   | MAT01      | 102       | C          | 40              |
+| 20022   | INF01      | 101       | U          | 20              |
+| 20022   | INF01      | 102       | A          | 20              |
+| 20022   | INF01      | 102       | B          | 20              |
+| 20022   | INF01      | 102       | C          | 20              |
+| 20022   | INF01      | 103       | U          | 60              |
+| 20022   | INF01      | 104       | U          | 40              |
+| 20022   | INF01      | 105       | U          | 40              |
+| 20022   | INF01      | 106       | U          | 70              |
+| 20022   | INF01      | 107       | A          | 30              |
+| 20022   | INF01      | 107       | B          | 40              |
+| 20022   | INF01      | 109       | U          | 40              |
+
+
+ predio
+| cod_pred | nome_pred | 
+|-----------|------------|
+| 43421   | Informática -laboratórios  | 
+| 43422  | Informática - administração | 
+| 43423   | Informática - aulas   |
+
+
+ sala
+| cod_pred    | num_sala | descricao_sala | capacidade_sala |
+|-------------|----------|---------------------|----------|
+| 43421       | 101      | Laboratório Windows | 30       |
+| 43421       | 102      | Laboratório Redes   | 30       |
+| 43421       | 103      | Laboratório Linux   | 30       |
+| 43421       | 104      | Laboratório Windows | 30       |
+| 43421       | 105      | Laboratório Linux   | 30       |
+| 43421       | 106      | Laboratório Hardware | 30       |
+| 43421       | 107      | Laboratório Automação | 30      |
+| 43422       | 101      | Secretaria Geral    | NULL      |
+| 43422       | 102      | Secretaria Graduação | NULL     |
+| 43422       | 103      | Secretaria pós´graduação | NULL |
+| 43423       | 101      | Sala de aula comun | 30    |
+| 43423       | 102      | Sala de aula comu | 30   |
+| 43423       | 103      | Sala de aula comun | 30  | 
+| 43423       | 104      | Sala de aula multimídia | 30  |
+| 43423       | 105      | Auditório | 80   |
+| 43423       | 106      | Sala de aula laboratório | 30  |
+| 43423       | 107      | Sala de aula laboratório | 30 |
+
+
+ periodo
+| ano_sem | cod_ depto | num_disc | sigla_ofer | dia_sem | hora_início | cod_pred | num_sala | num_horas |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| 20021 | MAT01 | 101 | A | 2 | 8 | 43423 | 101 | 2 |  
+| 20021 | MAT01 | 101 | A | 4 | 8 | 43423 | 101 | 2 |  
+| 20021 | MAT01 | 101 | B | 2 | 10 | 43423 | 101 | 2 |  
+| 20021 | MAT01 | 101 | B | 4 | 10 | 43423 | 101 | 2 |  
+| 20021 | MAT01 | 101 | C | 2 | 8 | 43423 | 102 | 2 |  
+| 20021 | MAT01 | 101 | C | 4 | 8 | 43423 | 102 | 2 |  
+| 20021 | INF01 | 101 | A | 2 | 8 | 43421 | 102 | 2 |  
+| 20021 | INF01 | 101 | A | 4 | 8 | 43421 | 102 | 2 |  
+| 20021 | INF01 | 101 | B | 2 | 10 | 43421 | 102 | 2 |  
+| 20021 | INF01 | 101 | B | 4 | 10 | 43421 | 102 | 2 |  
+| 20021 | INF01 | 102 | A | 2 | 8 | 43421 | 101 | 2 |  
+| 20021 | INF01 | 102 | A | 4 | 8 | 43421 | 103 | 2 |  
+| 20021 | INF01 | 102 | A | 6 | 8 | 43421 | 103 | 2 |  
+
+depto
+| cod_depto | nome_depto | 
+|-----------|------------|
+| INF01   | Informática  | 
+| MED01   | Medicina Interna | 
+| MAT01   | Matemática   |
+| FIS01   |   Física   |
+
+
+ disciplina
+| cod_depto  | num_disc  | nome_disc               | creditos_disc |
+|------------|-----------|-------------------------|---------------|
+| MAT01      | 101       | Cálculo Diferencial     | 4             |
+| MAT01      | 102       | Álgebra Linear          | 4             |
+| MAT01      | 103       | Geometria Analítica     | 4             |
+| INF01      | 101       | Programação FORTRAN     | 4             |
+| INF01      | 102       | Algoritmos e Programação| 6             |
+| INF01      | 103       | Estrutura de Dados      | 4             |
+| INF01      | 104       | Programação Lógica      | 4             |
+| INF01      | 105       | Teoria da Computação    | 4             |
+| INF01      | 106       | Banco de Dados          | 4             |
+| INF01      | 107       | Linguagens Formais      | 2             |
+| INF01      | 108       | Compiladores            | 4             |
+| INF01      | 109       | Classificação e Pesquisa| 6             |
+
+
+ prereq
+| cod_epto   | num_disc  | num_disc | cod_depto_prereq  | num_disc_prereq |
+|------------|-----------|----------|-------------------|-----------------|
+| INF01      | 109       | 9        | INF01             | 107             | 
+| INF01      | 109       | 9        | INF01             | 108             | 
+| INF01      | 108       | 8        | INF01             | 106             | 
+| INF01      | 108       | 8        | INF01             | 105             | 
+| INF01      | 107       | 7        | INF01             | 104             | 
+| INF01      | 106       | 6        | INF01             | 104             | 
+| INF01      | 105       | 5        | INF01             | 104             | 
+| INF01      | 104       | 4        | INF01             | 102             | 
+| INF01      | 103       | 3        | INF01             | 102             | 
+| MAT01      | 103       | 3        | MAT01             | 101             | 
+
+ departamento
+| codigo_depto    | nome_depto     | nivel_depto    | 
+|-----------------|---------------|---------------|
+| 1               | Informática   | Pós-graduação | 
+| 2               | Administração | Graduação     | 
+| 3               | Medicina      | Graduação     |
+
+ professor
+| codigo_prof | nome_prof     | titulacao_prof | cod_depto |
+|-------------|---------------|----------------|----------|
+| 1           | Antônio Souza | Doutor          | 1       |
+| 2           | Pedro Silva   | Mestre          | 2       |
+| 3           | Felipe Souza  | Doutor          | 3       |
+| 4           | Manuel Silva  | Doutor          | 1       |
+
+ titulacao
+| cod_tit | nome_tit | 
+|-----------|------------|
+| 1   | Graduado  | 
+| 2   | Especialista | 
+| 3   | Mestre   |
+| 4   |  Doutor   |
+
+
+ professor
+| cod_prof    | cod_depto | cod_tit | nome_prof |
+|-------------|----------|---------------------|----------|
+| 1       | INF01      | 4 | Souza       |
+| 2       | INF01     | 4   | Antunes       |
+| 3       | INF01      | 4   | Macedo       |
+| 4       | INF01      | NULL | Machado       |
+| 5       | INF01      | 3   | Tavares       |
+| 6       | INF01      | 3 | Pereira       |
+| 7       | MAT01      | 4 | Alvares      |
+| 8       | MAT01      | 4    | Silva      |
+| 9       | MAT01      | NULL | Souza     |
+| 10      | INF01      | NULL | Machado |
+| 11      | INF01      | 4 | Moreira    |
 
 **Exercício 3.21: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os professores que são do departamento de código 'INF01' e que ministram ao menos uma oferta no ano-semestre 20021.**
 
+Código Completo:
+
+Para obter a saída, você precisaria executar o código SQL completo, incluindo a criação das tabelas e a inserção dos dados. Aqui está um exemplo de como o código completo poderia ser:
+
+
+CREATE TABLE professor (  
+
+  cod_prof INT,
+
+  nome_prof VARCHAR(255),
+
+  cod_depto VARCHAR(255)
+
+);
+
+CREATE TABLE oferta (
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT
+
+);
+
+CREATE TABLE disciplina (
+
+  cod_depto VARCHAR(255),
+  
+  
+);
+
+INSERT INTO professor (cod_prof, nome_prof, cod_depto) VALUES
+
+  (1, 'Souza', 'INF01'),
+
+  (2, 'Antunes', 'INF01'),
+
+  (3, 'Macedo', 'INF01'),
+
+  (4, 'Machado', 'INF01'),
+
+  (5, 'Tavares', 'INF01'),
+
+  (6, 'Pereira', 'INF01'),
+
+  (7, 'Alvares', 'MAT01'),
+
+  (8, 'Silva', 'MAT01'),
+
+  (9, 'Souza', 'MAT01'),
+
+  (10, 'Machado', 'INF01'),
+
+  (11, 'Moreira', 'INF01');
+
+INSERT INTO oferta (ano_sem, cod_depto, num_disc) VALUES
+
+  ('20021', 'INF01', 107),
+
+  ('20021', 'INF01', 108),
+
+  ('20021', 'INF01', 109);
+
+INSERT INTO disciplina (cod_depto, num_disc) VALUES
+
+  ('INF01', 107),
+
+  ('INF01', 108),
+
+  ('INF01', 109);
+
+SELECT DISTINCT p.cod_prof, p.nome_prof
+
+FROM professor p
+
+WHERE p.cod_depto = 'INF01'
+
+AND EXISTS (
+
+  SELECT 1
+
+  FROM oferta o
+
+  JOIN disciplina d ON o.cod_depto = d.cod_depto AND o.num_disc = d.num_disc
+
+  WHERE o.ano_sem = '20021' AND d.cod_depto = p.cod_depto
+
+);
+
+
+Saída:
+
+| cod_prof | nome_prof |
+|----------|-----------|
+| 1        | Souza     |
+| 2        | Antunes   |
+| 3        | Macedo    |
+| 4        | Machado   |
+| 5        | Tavares   |
+| 6        | Pereira   |
+| 10       | Machado   |
+| 11       | Moreira   |
+
 **Exercício 3.22: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os nomes dos professores que têm titulação denominada 'Doutor' e que são do departamento 'Informática'.**
+
+SQL:
+
+
+SELECT p.nome_prof
+
+FROM professor p
+
+JOIN titulacao t ON p.cod_tit = t.cod_tit
+
+WHERE t.nome_tit = 'Doutor' AND p.cod_depto = 'INF01';
+
+
+**Álgebra Relacional:**
+
+π nome_prof (σ nome_tit = 'Doutor' ∧ cod_depto = 'INF01' (professor ⋈ titulacao))
+
+**Cálculo Relacional:**
+
+{t.nome_prof | ∃ p ∃ t (p ∈ professor ∧ t ∈ titulacao ∧   p.cod_tit = t.cod_tit ∧ t.nome_tit = 'Doutor' ∧ p.cod_depto = 
+
+'INF01' ∧ t = p.nome_prof)}
+
+Observação:
+
+A saída seria uma lista com os nomes dos professores que atendem aos critérios.
+
+Saída:
+
+| nome_prof |
+|-----------|
+| Souza     |
+| Antunes   |
+| Macedo    |
+| Moreira   |
+
+Código Completo:
+
+
+CREATE TABLE professor (
+
+  cod_prof INT,
+
+  nome_prof VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  cod_tit INT
+
+);
+
+CREATE TABLE titulacao (
+
+  cod_tit INT,
+
+  nome_tit VARCHAR(255)
+
+);
+
+INSERT INTO professor (cod_prof, nome_prof, cod_depto, cod_tit) VALUES
+
+  (1, 'Souza', 'INF01', 4),
+
+  (2, 'Antunes', 'INF01', 4),
+
+  (3, 'Macedo', 'INF01', 4),
+
+  (4, 'Machado', 'INF01', NULL),
+
+  (5, 'Tavares', 'INF01', 3),
+
+  (6, 'Pereira', 'INF01', 3),
+
+  (7, 'Alvares', 'MAT01', 4),
+
+  (8, 'Silva', 'MAT01', 4),
+
+  (9, 'Souza', 'MAT01', NULL),
+
+  (10, 'Machado', 'INF01', NULL),
+
+  (11, 'Moreira', 'INF01', 4);
+
+INSERT INTO titulacao (cod_tit, nome_tit) VALUES
+
+  (1, 'Graduado'),
+
+  (2, 'Especialista'),
+
+  (3, 'Mestre'),
+
+  (4, 'Doutor');
+
+SELECT p.nome_prof
+
+FROM professor p
+
+JOIN titulacao t ON p.cod_tit = t.cod_tit
+
+WHERE t.nome_tit = 'Doutor' AND p.cod_depto = 'INF01';
 
 **Exercício 3.23: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os identificadores  e os nomes das disciplinas que tiveram pelo menos uma oferta no ano-semestre 20011.**
 
-**Exercício 3.24: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os nomes dos professores que ministram aulas em ao menos uma oferta de uma disciplina de um departamento diferente daquele ao qual o professor está vinculadoê**
+SQL:
+
+
+SELECT DISTINCT d.cod_depto, d.num_disc, d.nome_disc
+
+FROM disciplina d
+
+JOIN oferta o ON d.cod_depto = o.cod_depto AND d.num_disc = o.num_disc
+
+WHERE o.ano_sem = '20011';
+
+
+**Álgebra Relacional:**
+
+π cod_depto, num_disc, nome_disc (σ ano_sem = '20011' (disciplina ⋈ oferta))
+
+**Cálculo Relacional:**
+
+{t | ∃ d ∃ o (d ∈ disciplina ∧ o ∈ oferta ∧ d.cod_depto = o.cod_depto ∧ d.num_disc = o.num_disc ∧ o.ano_sem = '20011' ∧ t.cod_depto = d.cod_depto ∧ t.num_disc = d.num_disc ∧ t.nome_disc = d.nome_disc)}
+
+Observação:
+
+A saída seria uma lista com os identificadores (cod_depto e num_disc) e os nomes das disciplinas que tiveram pelo menos uma oferta no ano-semestre 20011.
+
+Saída:
+
+| cod_depto | num_disc | nome_disc               |
+|-----------|----------|-------------------------|
+| MAT01     | 101      | Cálculo Diferencial     |
+| INF01     | 101      | Programação FORTRAN     |
+| INF01     | 102      | Algoritmos e Programação|
+| INF01     | 103      | Estrutura de Dados      |
+| INF01     | 104      | Programação Lógica      |
+| INF01     | 105      | Teoria da Computação    |
+| INF01     | 106      | Banco de Dados          |
+
+Código Completo:
+
+
+CREATE TABLE disciplina (
+  cod_depto VARCHAR(255),
+  num_disc INT,
+  nome_disc VARCHAR(255)
+);
+
+CREATE TABLE oferta (
+  ano_sem VARCHAR(255),
+  cod_depto VARCHAR(255),
+  num_disc INT
+);
+
+INSERT INTO disciplina (cod_depto, num_disc, nome_disc) VALUES
+  ('MAT01', 101, 'Cálculo Diferencial'),
+  ('MAT01', 102, 'Álgebra Linear'),
+  ('MAT01', 103, 'Geometria Analítica'),
+  ('INF01', 101, 'Programação FORTRAN'),
+  ('INF01', 102, 'Algoritmos e Programação'),
+  ('INF01', 103, 'Estrutura de Dados'),
+  ('INF01', 104, 'Programação Lógica'),
+  ('INF01', 105, 'Teoria da Computação'),
+  ('INF01', 106, 'Banco de Dados');
+
+INSERT INTO oferta (ano_sem, cod_depto, num_disc) VALUES
+  ('20211', 'MAT01', 101),
+  ('20211', 'INF01', 101),
+  ('20211', 'INF01', 102),
+  ('20211', 'INF01', 103),
+  ('20211', 'INF01', 104),
+  ('20211', 'INF01', 105),
+  ('20211', 'INF01', 106);
+
+SELECT DISTINCT d.cod_depto, d.num_disc, d.nome_disc
+
+FROM disciplina d
+
+JOIN oferta o ON d.cod_depto = o.cod_depto AND d.num_disc = o.num_disc
+
+WHERE o.ano_sem = '20211';
+
+**Exercício 3.24: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os nomes dos professores que ministram aulas em ao menos uma oferta de uma disciplina de um departamento diferente daquele ao qual o professor está vinculado.**
+
+SQL:
+
+
+SELECT DISTINCT p.nome_prof
+
+FROM professor p
+
+JOIN disciplina d ON p.cod_depto <> d.cod_depto
+
+JOIN oferta o ON d.cod_depto = o.cod_depto AND d.num_disc = o.num_disc;
+
+
+No entanto, essa consulta não é suficiente para garantir que o professor ministra aulas em ao menos uma oferta de uma disciplina de um departamento diferente. Para resolver isso, precisamos de uma tabela que relacione professores e ofertas de disciplinas. Vamos supor que exista uma tabela ministra com os campos cod_prof, ano_sem, cod_depto e num_disc.
+
+
+SELECT DISTINCT p.nome_prof
+
+FROM professor p
+
+JOIN ministra m ON p.cod_prof = m.cod_prof
+
+JOIN oferta o ON m.ano_sem = o.ano_sem   AND m.cod_depto = o.cod_depto AND m.num_disc = o.num_disc
+
+JOIN disciplina d ON o.cod_depto = d.cod_depto AND o.num_disc = d.num_disc
+
+WHERE p.cod_depto <> d.cod_depto;
+
+
+**Álgebra Relacional:**
+
+π nome_prof (σ cod_depto_prof <> cod_depto_disc   (professor ⋈ ministra ⋈ oferta ⋈ disciplina))
+
+*Cálculo Relacional:*
+
+{t.nome_prof | ∃ p ∃ m ∃ o ∃ d (p ∈ professor ∧ m ∈ ministra ∧   o ∈ oferta ∧ d ∈ disciplina ∧ p.cod_prof = m.cod_prof ∧ m.
+
+ano_sem = o.ano_sem ∧ m.cod_depto = o.cod_depto ∧ m.num_disc = o.num_disc ∧ o.cod_depto = d.cod_depto ∧ o.num_disc = d.
+
+num_disc ∧ p.cod_depto <> d.cod_depto ∧ t.nome_prof = p.nome_prof)}
+
+Observação:
+
+A saída seria uma lista com os nomes dos professores que ministram aulas em ao menos uma oferta de uma disciplina de um departamento diferente daquele ao qual o professor está vinculado.
+
+Código Completo:
+
+
+CREATE TABLE professor (
+
+  cod_prof INT,
+
+  nome_prof VARCHAR(255),
+
+  cod_depto VARCHAR(255)
+
+);
+
+CREATE TABLE ministra (
+
+  cod_prof INT,
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT
+
+);
+
+CREATE TABLE oferta (
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT
+
+);
+
+CREATE TABLE disciplina (
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT,
+
+  nome_disc VARCHAR(255)
+
+);
+
+INSERT INTO professor (cod_prof, nome_prof, cod_depto) VALUES
+
+  (1, 'Souza', 'INF01'),
+
+  (2, 'Antunes', 'INF01'),
+
+  (3, 'Macedo', 'MAT01');
+
+INSERT INTO ministra (cod_prof, ano_sem, cod_depto, num_disc) VALUES
+
+  (1, '20211', 'MAT01', 101),
+
+  (2, '20211', 'INF01', 102),
+
+  (3, '20211', 'INF01', 103);
+
+INSERT INTO oferta (ano_sem, cod_depto, num_disc) VALUES
+
+  ('20211', 'MAT01', 101),
+
+  ('20211', 'INF01', 102),
+
+  ('20211', 'INF01', 103);
+
+INSERT INTO disciplina (cod_depto, num_disc, nome_disc) VALUES
+
+  ('MAT01', 101, 'Cálculo Diferencial'),
+
+  ('INF01', 102, 'Algoritmos e Programação'),
+
+  ('INF01', 103, 'Estrutura de Dados');
+
+SELECT DISTINCT p.nome_prof
+
+FROM professor p
+
+JOIN ministra m ON p.cod_prof = m.cod_prof
+
+JOIN oferta o ON m.ano_sem = o.ano_sem AND   m.cod_depto = o.cod_depto AND m.num_disc = o.num_disc
+
+JOIN disciplina d ON o.cod_depto = d.cod_depto AND o.num_disc = d.num_disc
+
+WHERE p.cod_depto <> d.cod_depto;
+
+
+Saída:
+
+| nome_prof |
+|-----------|
+| Souza     |
 
 **Exercício 3.25: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional,  os nomes dos departamentos que, em 20021, tiveram ao menos uma oferta com aulas nas segundas-feiras (dia_sem=2), na sala 101 do prédio denominado 'Informática - laboratórios'**
 
+SQL:
+
+
+SELECT DISTINCT d.nome_depto
+
+FROM departamento d
+
+JOIN disciplina di ON d.cod_depto = di.cod_depto
+
+JOIN oferta o ON di.cod_depto = o.cod_depto AND di.num_disc = o.num_disc
+
+JOIN aula a ON o.ano_sem = a.ano_sem AND o.cod_depto = a.cod_depto AND o.num_disc = a.num_disc
+
+JOIN sala s ON a.cod_predio = s.cod_predio AND a.num_sala = s.num_sala
+
+JOIN predio p ON s.cod_predio = p.cod_predio
+
+WHERE o.ano_sem = '20021' AND a.dia_sem = 2 AND   s.num_sala = 101 AND p.nome_predio = 'Informática - laboratórios';
+
+
+**Álgebra Relacional:**
+
+π nome_depto (σ ano_sem = '20021' ∧ dia_sem = 2   ∧ num_sala = 101 ∧ nome_predio = 'Informática - laboratórios' (departamento ⋈ disciplina ⋈ oferta ⋈ aula ⋈ sala ⋈ predio))
+
+**Cálculo Relacional:**
+
+{t.nome_depto | ∃ d ∃ di ∃ o ∃ a ∃ s ∃ p (d ∈ departamento ∧ di ∈ disciplina ∧ o ∈ oferta ∧ a ∈ aula ∧ s ∈ sala ∧ p ∈ 
+
+predio ∧ d.cod_depto = di.cod_depto ∧ di.cod_depto = o.cod_depto   ∧ di.num_disc = o.num_disc ∧ o.ano_sem = a.ano_sem ∧ o.
+
+cod_depto = a.cod_depto ∧ o.num_disc = a.num_disc ∧ a.cod_predio = s.cod_predio   ∧ a.num_sala = s.num_sala ∧ s.cod_predio =
+
+ p.cod_predio ∧ o.ano_sem = '20021' ∧ a.dia_sem = 2 ∧ s.num_sala = 101   ∧ p.nome_predio = 'Informática - laboratórios' ∧ t.
+
+nome_depto = d.nome_depto)}
+
+Observação:
+
+A saída seria uma lista com os nomes dos departamentos que, em 20021, tiveram ao menos uma oferta com aulas nas segundas-feiras (dia_sem=2), na sala 101 do prédio denominado 'Informática - laboratórios'.
+
+Código Completo:
+
+
+CREATE TABLE departamento (
+
+  cod_depto VARCHAR(255),
+
+  nome_depto VARCHAR(255)
+
+);
+
+CREATE TABLE disciplina (
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT,
+
+  nome_disc VARCHAR(255)
+
+);
+
+CREATE TABLE oferta (
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT
+
+);
+
+CREATE TABLE aula (
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT,
+
+  dia_sem INT,
+
+  cod_predio VARCHAR(255),
+
+  num_sala INT
+
+);
+
+CREATE TABLE sala (
+
+  cod_predio VARCHAR(255),
+
+  num_sala INT
+
+);
+
+CREATE TABLE predio (
+
+  cod_predio VARCHAR(255),
+
+  nome_predio VARCHAR(255)
+
+);
+
+INSERT INTO departamento (cod_depto, nome_depto) VALUES
+
+  ('INF01', 'Informática');
+
+INSERT INTO disciplina (cod_depto, num_disc, nome_disc) VALUES
+
+  ('INF01', 107, 'Programação OO');
+
+INSERT INTO oferta (ano_sem, cod_depto, num_disc) VALUES
+
+  ('20021', 'INF01', 107);
+
+INSERT INTO aula (ano_sem, cod_depto, num_disc, dia_sem, cod_predio, num_sala) VALUES
+
+  ('20021', 'INF01', 107, 2, 'P1', 101);
+
+INSERT INTO sala (cod_predio, num_sala) VALUES
+
+  ('P1', 101);
+
+INSERT INTO predio (cod_predio, nome_predio) VALUES
+
+  ('P1', 'Informática - laboratórios');
+
+SELECT DISTINCT d.nome_depto
+
+FROM departamento d
+
+JOIN disciplina di ON d.cod_depto = di.cod_depto
+
+JOIN oferta o ON di.cod_depto = o.cod_depto AND di.num_disc = o.num_disc
+
+JOIN aula a ON o.ano_sem = a.ano_sem AND   o.cod_depto = a.cod_depto AND o.num_disc = a.num_disc
+
+JOIN sala s ON a.cod_predio = s.cod_predio AND a.num_sala = s.num_sala
+
+JOIN predio p ON s.cod_predio = p.cod_predio
+
+WHERE o.ano_sem = '20021' AND a.dia_sem = 2 AND   s.num_sala = 101 AND p.nome_predio = 'Informática - laboratórios';
+
+
+Saída:
+
+| nome_depto |
+|------------|
+| Informática|
+
 **Exercício 3.26: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para os códigos e os nomes dos professores que não deram aula em nenhua oferta.**
+
+SQL:
+
+
+SELECT p.cod_prof, p.nome_prof
+
+FROM professor p
+
+WHERE p.cod_prof NOT IN (
+
+  SELECT m.cod_prof
+
+  FROM ministra m
+
+);
+
+
+**Álgebra Relacional:**
+
+π cod_prof, nome_prof (professor) - π cod_prof, nome_prof (professor ⋈ ministra)
+
+**Cálculo Relacional:**
+
+{t | ∃ p (p ∈ professor ∧ ¬∃ m (m ∈ ministra   ∧ p.cod_prof = m.cod_prof) ∧ t.cod_prof = p.cod_prof ∧ t.nome_prof = p.
+
+nome_prof)}
+
+Observação:
+
+A saída seria uma lista com os códigos e os nomes dos professores que não deram aula em nenhuma oferta.
+
+Código Completo:
+
+
+CREATE TABLE professor (
+
+  cod_prof INT,
+
+  nome_prof VARCHAR(255),
+
+  cod_depto VARCHAR(255)
+
+);
+
+CREATE TABLE ministra (
+
+  cod_prof INT,
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT
+
+);
+
+INSERT INTO professor (cod_prof, nome_prof, cod_depto) VALUES
+
+  (1, 'Souza', 'INF01'),
+
+  (2, 'Antunes', 'INF01'),
+
+  (3, 'Macedo', 'MAT01'),
+
+  (4, 'Machado', 'INF01');
+
+INSERT INTO ministra (cod_prof, ano_sem, cod_depto, num_disc) VALUES
+
+  (1, '20211', 'MAT01', 101),
+
+  (2, '20211', 'INF01', 102);
+
+SELECT p.cod_prof, p.nome_prof
+
+FROM professor p
+
+WHERE p.cod_prof NOT IN (
+
+  SELECT m.cod_prof
+
+  FROM ministra m
+
+);
+
+
+Saída:
+
+| cod_prof | nome_prof |
+|----------|-----------|
+| 3        | Macedo    |
+| 4        | Machado   |
+
+Observação Final:
+
+O código completo inclui a criação das tabelas professor e ministra, a inserção de dados e a consulta SQL para obter os códigos e os nomes dos professores que não deram aula em nenhuma oferta. A saída inclui os códigos e os nomes dos professores que atendem a esse critério.
 
 **Exercício 3.27: Obter uma consulta utilizando os códigos SQL, Álgebra Relacional e Cálculo Relacional para  os nomes dos professores que não deram aula em nenhua oferta.**
 
+SQL:
+
+
+SELECT p.nome_prof
+
+FROM professor p
+
+WHERE p.cod_prof NOT IN (
+
+  SELECT m.cod_prof
+
+  FROM ministra m
+
+);
+
+
+**Álgebra Relacional:**
+
+π nome_prof (professor) - π nome_prof (professor ⋈ ministra)
+
+**Cálculo Relacional:**
+
+{t.nome_prof | ∃ p (p ∈ professor ∧ ¬∃ m (m ∈ ministra   ∧ p.cod_prof = m.cod_prof) ∧ t.nome_prof = p.nome_prof)}
+
+Observação:
+
+A saída seria uma lista com os nomes dos professores que não deram aula em nenhuma oferta.
+
+Código Completo:
+
+
+CREATE TABLE professor (
+
+  cod_prof INT,
+
+  nome_prof VARCHAR(255),
+
+  cod_depto VARCHAR(255)
+
+);
+
+CREATE TABLE ministra (
+
+  cod_prof INT,
+
+  ano_sem VARCHAR(255),
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT
+
+);
+
+INSERT INTO professor (cod_prof, nome_prof, cod_depto) VALUES
+
+  (1, 'Souza', 'INF01'),
+
+  (2, 'Antunes', 'INF01'),
+
+  (3, 'Macedo', 'MAT01'),
+
+  (4, 'Machado', 'INF01');
+
+INSERT INTO ministra (cod_prof, ano_sem, cod_depto, num_disc) VALUES
+
+  (1, '20211', 'MAT01', 101),
+
+  (2, '20211', 'INF01', 102);
+
+SELECT p.nome_prof
+
+FROM professor p
+
+WHERE p.cod_prof NOT IN (
+
+  SELECT m.cod_prof
+
+  FROM ministra m
+
+);
+
+
+Saída:
+
+| nome_prof |
+|-----------|
+| Macedo    |
+| Machado   |
+
+Observação Final:
+
+O código completo inclui a criação das tabelas professor e ministra, a inserção de dados e a consulta SQL para obter os nomes dos professores que não deram aula em nenhuma oferta. A saída inclui os nomes dos professores que atendem a esse critério
+
 **Exercício 3.29: Obter os códigos para cada disciplina que possui um pré-requisito, obtenha o nome a disciplina, seguido do nome da discilina que é pré-requisito.**
+
+SQL:
+
+
+SELECT d.nome_disc AS "Disciplina", pr.nome_disc AS "Pré-requisito"
+
+FROM disciplina d
+
+JOIN pre_requisito prq ON d.cod_depto = prq.cod_depto   AND d.num_disc = prq.num_disc
+
+JOIN disciplina pr ON prq.cod_depto_pr = pr.cod_dept   AND prq.num_disc_pr = pr.num_disc;
+
+
+**Álgebra Relacional:**
+
+π nome_disc, nome_disc_pr (disciplina ⋈ pre_requisito ⋈ disciplina (renomeada como pr))
+
+**Cálculo Relacional:**
+
+{t | ∃ d ∃ prq ∃ pr (d ∈ disciplina ∧ prq ∈ pre_requisito ∧   pr ∈ disciplina ∧ d.cod_depto = prq.cod_depto ∧ d.num_disc =
+
+ prq.num_disc ∧ prq.cod_depto_pr = pr.cod_depto ∧   prq.num_dis_pr = pr.num_disc ∧ t.Disciplina = d.nome_disc ∧ t
+ 
+ ["Pré-requisito"] = pr.nome_disc)}
+
+Observação:
+
+A saída seria uma lista com os nomes das disciplinas que possuem pré-requisitos, seguidos dos nomes das disciplinas que são pré-requisitos.
+
+Código Completo:
+
+
+CREATE TABLE disciplina (
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT,
+
+  nome_disc VARCHAR(255)
+
+);
+
+CREATE TABLE pre_requisito (
+
+  cod_depto VARCHAR(255),
+
+  num_disc INT,
+
+  cod_depto_pr VARCHAR(255),
+
+  num_disc_pr INT
+
+);
+
+INSERT INTO disciplina (cod_depto, num_disc, nome_disc) VALUES
+
+  ('INF01', 101, 'Programação FORTRAN'),
+
+  ('INF01', 102, 'Algoritmos e Programação'),
+
+  ('INF01', 103, 'Estrutura de Dados'),
+
+  ('INF01', 104, 'Programação Lógica');
+
+INSERT INTO pre_requisito (cod_depto, num_disc, cod_depto_pr, num_disc_pr) VALUES
+
+  ('INF01', 102, 'INF01', 101),
+
+  ('INF01', 103, 'INF01', 102),
+
+  ('INF01', 104, 'INF01', 103);
+
+SELECT d.nome_disc AS "Disciplina", pr.nome_disc AS "Pré-requisito"
+
+FROM disciplina d
+
+JOIN pre_requisito prq ON d.cod_depto = prq.cod_depto AND d.num_disc = prq.num_disc
+
+JOIN disciplina pr ON prq.cod_depto_pr = pr.cod_depto AND prq.num_disc_pr = pr.num_disc;
+
+
+Saída:
+
+| Disciplina              | Pré-requisito           |
+|-------------------------|-------------------------|
+| Algoritmos e Programação| Programação FORTRAN     |
+| Estrutura de Dados      | Algoritmos e Programação|
+| Programação Lógica      | Estrutura de Dados      
 
 **Exercício 3.30: Escreva uma consulta que para cada disciplina que possua ao menos um pré-requisito, o qual, a sua vez , também tenha um pré-requisito, obtenha o nome da disciplina seguido do nome da disciplina que é pré-requisito de seu pré-requisito.**
 
